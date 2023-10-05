@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex box</title>
+    <style>
+         /* FLEX PROPERTIES FOR FLEX CONTAINER */
+        .container{
+            width:100%;
+            height: 300px;
+            border: solid 2px black;
+            margin: auto; 
+            display: flex;
+            /* container ke display flex box korlei amader flex box kaj 
+            korbe..mane display flex kaj korar jonno container dorkar  */
+
+            flex-direction: row;  /* this is a default value of flex direction  */
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+            
+
+            /* flex-wrap: wrap-reverse;  defalut of flex wrap is no wrap  */
+           
+            /* flex-wrap:wrap; */
+
+            /* flex-flow: column wrap-reverse; 
+            (flex flow er kaj holo
+            duto direction ,wrap ke akaathe kaj korano) */
+            
+            justify-content: center;  
+            /* sob kota box ke center a anlo horizontally*/
+            /* justify-content: space-between; */
+            /* duto box er majhkhane same gaap ,suru r sesh a no gaap*/
+            /* justify-content: space-around; */
+            /* mane badike j gaap thakbe seta dandikeo thakbe */
+            /* justify-content: space-evenly; */
+            /* mane sob kota gaap same thkbe box er majhe */
+
+
+            align-items: center; 
+            /* sob kota box ke center a anlo vertically*/
+            /* align-items: flex-end; */
+            /* align-items: flex-start; (default value.) */ 
+            /* align-items: stretch; same as wrap */
+        }
+        .box{
+            background-color:blueviolet;
+            border: 2px solid red;
+            margin:3px;
+            padding: 3px;
+            width: 200px;
+            height: 200px;
+            
+        }
+
+        /* FLEX PROPERTIES FOR FLEX ITEMS */
+
+         #box1{
+            order:1;
+            /* oder onujaai hgobe..jar order boro hobe seta
+            last a jabe jar oredr choto se first  a jabe */
+            /* flex-basis: 300px; */
+         }
+         #box2{
+          order: 3;
+          /* flex-grow:1; */
+          flex: 8 ;
+          /* flex-shrink: 5;  */
+          /* Flex grow te jar value bashi tar growth bashi */
+         }
+         #box3{
+            order: 1;
+            /* flex-grow:5; */
+            /* flex-shrink:10;  */
+            /* flex shrink mane jar value bashi tar shrink mane choto 
+            basgi hobe
+            */
+            flex: 3;
+            /* flex-basis: 700px; */
+            /* if flex directiopn is set to row so its flex basis 
+            control in width */
+            /* if flex directiopn is set to column so its flex basis 
+            control in height */
+
+            /* flex-basis:  500px; */
+
+            /* flex: 0 2  400px; ata aksthe flex grow shrink ar basis */
+
+            /* align-self: center; */
+            /* align-self: flex-start; */
+            /* align-self: flex-end; */
+         }
+
+         
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box1">box-1</div>
+        <div class="box" id="box2">box-2</div>
+        <div class="box" id="box3">box-3</div>
+        <!-- <div class="box" id="box4">box-4</div>
+        <div class="box" id="box4">box-5</div>
+        <div class="box" id="box4">box-6</div> -->
+    </div>
+</body>
+</html>
