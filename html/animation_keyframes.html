@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animations_keyframes</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            /* background-color: #80868D; */
+        }
+        .container{
+            display: flex;
+            background-color: red;
+            
+           }
+        .box{
+            margin: auto;
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            position: relative;
+            /* animation-name:som ; */
+            /* animation-name:som1 ; */
+            animation-name:som1;
+            animation-duration: 5s;/* speed */
+            animation-iteration-count: infinite;
+            /* animation-fill-mode:backwards; */
+            /* forwords ar backwords pray same e */
+            animation-direction:alternate;
+            /* reverse,alternate reverese ,alternate*/
+            animation-timing-function: ease-in-out;
+            /* ease,ease-in,ease-in-out  aro onek ache*/
+            animation-delay: 1s;
+
+            /* animation:animation-name,animation-duration,
+            animation-timing-function,animation-delay,
+            animation-iteration-count,animation-fill-mode; */
+            
+            /* animation: som1 5s ease-in-out 1s infinite forwards; */
+
+            /* ekhane sob eksathe dewa ache tai bashi easy khali aktu 
+            mukhosto kore nite hobe kar por kota hobe */
+
+            /* animation: som2 1s ease-in-out 2s infinite forwards; */
+
+        }
+        /* @keyframes som {
+            from{
+                width:10px;
+            }
+            to{
+                width:2000px;
+            }
+            etake overright kore nicher keyframes ta kaj korche
+            progress bar a arom animatin dekha jay
+        } */
+        
+        @keyframes som1{
+            0%{
+                top: 0px;
+                left: 0px;
+                background:url(image/google-translate-icon.png) center/cover;
+            }
+            25%{
+                top: 500px;
+                left: 0px;
+                background-color: violet;
+            }
+            50%{
+                top: 500px;
+                left: 500px;
+                background-color: blue;
+                border: solid black 2px;
+                background: url(image/bal.jpg) center /cover;
+            }
+            75%{
+                left: 500px;
+                top: 500px;
+                background-color: greenyellow;
+            }
+            100%{
+                top: 0px;
+                left: 500px;
+                background: url(image/gym.jpg) center/cover;
+            }
+
+        }
+        /* @keyframes som2{
+            0%{
+                top: 0px;
+                right: 250px;
+            }
+            25%{
+                top: 250px;
+                left: 250px;
+            }
+            50%{
+                top: 300px;
+                right: 250px;
+            }
+            
+        } */
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>this is  box</h1>
+        </div>
+    </div>
+</body>
+</html>
