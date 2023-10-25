@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<style>
+    .error{
+        color: red;
+        font-size: 14px;
+    }
+</style>
+<body>
+    <form id="myForm">
+        <label for="Name">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter The Name">
+        <P class="error" id="nameText"></P>
+
+        <label for="Email">Email:</label>
+        <input type="text" id="emailInput" placeholder="Enter The Email">
+        <p  class="error" id="emailText"></p>
+
+        <label for="Phone">Phone:</label>
+        <input type="phone" id="phoneInput" placeholder="Enter The Email">
+        <p  class="error" id="phoneText"></p>
+        
+        <label for="Password">Password:</label>
+        <input type="password" id="passwordInput" placeholder="Enter The Password">
+        <!-- <button id="eyeBtn">👁‍🗨</button>  ata kaj korche na -->
+        <p  class="error" id="passwordText"></p>
+
+        <label for="ConfirmPassword">Confirm Password:</label>
+        <input type="password" id="ConfrimPasswordInput" placeholder="Enter The Password Again">
+        <p  class="error" id="ConfirmPasswordText"></p>
+
+        <!-- submit button -->
+        <button id="submit">Submit</button>
+        <button id="reset">reset</button>
+        
+    </form>
+
+
+    <script>
+        // reffernce of myForm
+        const myForm = document.getElementById('myForm')
+
+        // refferences of inputs
+        const nameInput = document.getElementById('nameInput')
+        const emailInput = document.getElementById('emailInput')
+        const phoneInput = document.getElementById('phoneInput')
+        const passwordInput = document.getElementById('passwordInput')
+        const ConfrimPasswordInput = document.getElementById('ConfrimPasswordInput')
+
+        // refferences of text(p tags)
+        const nameText = document.getElementById('nameText')
+        const emailText = document.getElementById('emailText')
+        const phoneText = document.getElementById('phoneText')
+        const passwordText = document.getElementById('passwordText')
+        const ConfirmPasswordText = document.getElementById('ConfirmPasswordText')
+
+        const eyeBtn = document.getElementById('eyeBtn')
+
+
+        const submit = document.getElementById('submit')
+        // refferences of submit button
+        const reset = document.getElementById('reset')
+
+
+
+        submit.addEventListener('click',(e)=>{
+            e.preventDefault(); // Prevent form submission to handle validation
+
+            // for Name.
+            if(nameInput.value === ''){
+                nameText.textContent = 'Name Is Required'
+            }
+            else{
+                nameText.textContent = ''
+            }
+
+
+            // for Email.
+            if(emailInput.value === ''){
+                emailText.textContent = 'Email Is Required'
+            }
+            else if (!isValidEmail(emailInput.value)){
+                emailText.textContent = 'Please Enter a Vlaid Email'
+                // ekhane lekha ache j jadi isValidEmail na thake mane validemail function a j jinis ta ache seta user value te diche na tahole text ta dekhabe.! ta diye atai bojhano hoche mane jadi na thak tahlei text ta dekhao r jadi thakle tahole text dekhanor dprkar na iseta sothik.
+            }
+            else{
+                emailText.textContent = '';
+            }
+
+
+            // for phone.
+            if(phoneInput.value === ''){
+                phoneText.textContent = 'phone Number is required'
+            }
+            else if(phoneInput.value.length < 10){
+                phoneText.textContent = '10 digit number is required'
+            }
+            else{
+                phoneText.textContent = ''
+            }
+
+
+
+            // for Password.
+            if(passwordInput.value === ''){
+                passwordText.textContent = 'Password Is Required'
+            }
+            else if (passwordInput.value.length >= 8 && isValidPassword(passwordInput.value)){
+                passwordText.textContent = ''
+            }
+            else{
+                passwordText.textContent = 'Password must be at least 8 character and contain at least 1 digit'
+            }
+            // upore ami && operator diye korechi jadi ||(or) operatro diye korte hoto taholelikte hoto j 
+            // else if(passwordInput.value.length < 8 || !isValidPassword(passwordInput.value)){} ,,,,,
+
+            // mane ekhane lekha ache j jadi 8 er theke kom character thake ba jadi 3 te digit na thake (ei duto conditotn er modhe j kono akta missing ba vul thake) tahole ata kaj korbe na...mane ata vul othoba ota vul thakkle kaj krbena.
+
+            // for confirm password.
+            if(ConfrimPasswordInput.value === ''){
+                ConfirmPasswordText.textContent = 'Confirm Password Is Required'
+            }
+            else if(passwordInput.value !== ConfrimPasswordInput){
+                ConfirmPasswordText.textContent = 'Passwords do not match';
+            }
+            else{
+                ConfirmPasswordText.textContent = '';
+            }
+
+              
+            // eyeBtn.addEventListener('click',()=>{
+            // if(passwordInput.type === 'password'){
+            //     passwordInput.type = 'text';
+            // }
+
+            // else{
+            //     passwordInput.type = 'password';
+                
+            // }
+            // })
+
+            // ata kaj korche na
+
+        })
+
+        reset.addEventListener('click',()=>{
+            // myForm.reset();
+            // nameText.textContent = ''
+            // emailText.textContent = ''
+            // phoneText.textContent = ''
+            // passwordText.textContent = ''
+            // ConfirmPasswordText.textContent = ''
+        })
+
+
+
+
+        function isValidEmail(email){
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+            // const emailRegex =  /[a-z][0-9][@][gmail.com]/ ata amar assumption kichu ta thik.
+           
+        }
+
+        function isValidPassword(password){
+            // *3 diyechi karon amar atleast 3 te digit chai .
+            const passwordRegex = /^(?=.*[0-9])(?=.*[@#$^&*()+!]).{8,}$/;
+            return passwordRegex.test(password)
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<style>
+    h1{
+       text-align: center;
+       text-decoration: underline;
+    }
+    #calculator{
+        border: 1px solid #ccc;
+        width: 20rem;
+        text-align: center;
+        padding: 10px;    
+        margin: 0 auto;
+        border-radius: 10px;
+        border: solid 2px solid;
+        background-color: #4444;
+    }
+    .row{
+        margin-top: 6px;
+    }
+
+    button{
+        padding: 0px 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        margin-right: 4px;
+        border-radius: 9px;
+        background-color: #9999;
+        transition: background-color 0.3s, box-shadow 0.3s; /* Add transition for box-shadow */
+        box-shadow: 10 2px 4px rgb(0, 0, 0); /* Add a subtle box shadow */
+    }
+    button:hover {
+    background-color: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase the shadow on hover */
+    }
+    #displayInput{
+        height: 40px;
+        width: 70%;
+        text-align: right;
+        font-size: 21px;
+        font-weight: 600;
+        padding: 0 10px;
+        background-color: azure;
+        border-radius: 12px;
+    }
+
+   #clear{
+    width: 70%;
+    background-color: red;
+    font-size: 30px;
+   }
+   #clear:hover{
+    background-color: rgb(162, 57, 57);
+   }
+</style>
+<body>
+
+    <h1>CALCULATOR</h1>
+    <div id="calculator">
+        
+        <input type="text" id="displayInput">
+        <div id="container">
+            <div class="row">
+                <button >7</button>
+                <button >8</button>
+                <button >9</button>
+                <button >/</button>
+            </div>
+            <div class="row">
+                <button >4</button>
+                <button >5</button>
+                <button >6</button>
+                <button >*</button>
+            </div>
+            <div class="row">
+                <button >1</button>
+                <button >2</button>
+                <button >3</button>
+                <button >-</button>
+            </div>
+            <div class="row">
+                <button >0</button>
+                <button >.</button>
+                <button >=</button>
+                <button >+</button>
+            </div>
+            <button id="clear">c</button>
+            
+        </div>
+   
+    </div>
+    <script>
+
+        const displayInput = document.getElementById('displayInput')
+        const buttons = document.querySelectorAll('button')
+        let string = '';
+
+        Array.from(buttons).forEach((button)=>{
+            button.addEventListener('click',(e)=>{
+                if(e.target.innerHTML === '='){
+                    string = eval(string)
+                    displayInput.value = string;
+                }
+                else if(e.target.innerHTML == 'c'){
+                    // displayInput.value = '';erom korleo hoy ba nicher ta.
+                    string = ''
+                    displayInput.value = string;
+                }
+                else{
+                    string = string + e.target.innerHTML;
+                    displayInput.value = string;               
+                    // displayInput.value += e.target.innerHTML;sma
+                    // erm bhabeo likhte partam but uporer ta venge lekha ache.
+                }
+            })
+
+        })
+
+
+       
+    </script>
+</body>
+</html>

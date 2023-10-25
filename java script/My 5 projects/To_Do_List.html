@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<style>
+    #container{
+        width: 60%;
+        margin: auto;
+    }
+    h1{
+        text-align: center;
+    }
+
+    #todoItemContainer{
+        min-height: 200px;
+        border: 1px solid #6666;
+        background-color: #978f8f44;
+        margin-top: 5px;
+        font-size: 22px;
+        
+    }
+    #todoitems{
+        text-align: left;
+        font-size: 22px;
+        background-color: rgb(10, 195, 71);
+        color: white;
+        
+    }
+    h2{
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    #To_Do_List{
+        text-align: center;
+    }
+    #todoInput{
+        width: 30%;
+        height: 1.5em;
+        font-size: 22px;
+        font-weight: 500;
+    }
+    #todobutton{
+        height: 2.3em;
+    }
+    button{
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    .lineThrough{
+        text-decoration: line-through;
+    }
+
+
+  
+</style>
+<body>
+    <div id="container">
+        <h1>To Do List</h1>
+        <div id="To_Do_List">
+        <input type="text" id="todoInput"><!-- input field -->
+        
+        <button id="todobutton">Add items</button><!-- Add item button -->
+
+        <div id="todoItemContainer"><!-- to do item container -->
+            <h2>to do items</h2>
+            <ul id="todoitems"><!-- the items will contain here -->
+
+                <!-- the to do items update here autometically. -->
+            
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // const todoInput = document.getElementById('todoInput')
+        // const todobutton = document.getElementById('todobutton')
+
+        // const blankArray = []
+
+        // todobutton.addEventListener('click',()=>{
+        //     const todoInput = document.getElementById('todoInput').value;
+        //     blankArray.push(todoInput)
+        //     document.getElementById('todoInput').value = '';
+        //     todoDisplay(blankArray);
+        // })
+
+
+        // function removeToDo(index){
+        //     blankArray.splice(index,1)
+        //     todoDisplay(blankArray)
+        //     // updated the ul by calling this function.
+        // }
+        // // remove function making and its called below.
+
+
+         
+        // function todoDisplay(items){
+        //     const todoitems = document.getElementById('todoitems')
+        //     todoitems.innerHTML = '';
+
+        //     items.forEach((item)=>{
+        //         const listElement = document.createElement('li')
+        //         const text = document.createTextNode(item)
+        //         listElement.appendChild(text)
+        //         todoitems.appendChild(listElement)
+        //         // appending the listelement in todoitem box.ul er vetore li dhokano holo.
+
+
+
+
+        //         // remove start.
+        //         const removeButton = document.createElement('button');
+        //         removeButton.textContent = 'Remove';
+              
+        //         removeButton.addEventListener('click',()=>{
+        //             removeToDo(blankArray.indexOf(item))
+        //             // calling the remove function.
+        //         })
+        //         // remove end.
+                
+        //         const strikeButton = document.createElement('button')
+        //         strikeButton.textContent = 'Done'
+
+        //         strikeButton.addEventListener('click',()=>{
+        //             // if(listElement.style.textDecoration === 'line-through'){
+        //             //     listElement.style.textDecoration = 'none'
+        //             // }
+        //             // else{
+        //             //     listElement.style.textDecoration = 'line-through'
+        //             // }
+
+        //         })
+
+
+        //         listElement.appendChild(strikeButton)
+        //         listElement.appendChild(removeButton)
+        //         // appending the remove button in listelement.
+        //     })
+        // }
+
+
+        
+
+
+        /*Different & Better Method*/
+
+        const todoInput = document.getElementById('todoInput')
+        const todobutton = document.getElementById('todobutton')
+        const todoitems = document.getElementById('todoitems')
+        // references the all elements.
+
+        todobutton.addEventListener('click',(e)=>{
+            // const t = e.target.parentElement.querySelector('#todoInput')
+            if(todoInput.value === ''){
+                alert('you must write something')
+            }
+            else{
+                let li = document.createElement('li')
+                li.textContent = todoInput.value;
+                todoitems.appendChild(li)
+                // create the li .and append the li into todoitems id.
+
+                let DoneButton = document.createElement('button')
+                DoneButton.textContent = 'Done'
+                li.appendChild(DoneButton)
+                // create the Done button and append it into li.
+
+                let removeButton = document.createElement('button')
+                removeButton.textContent = 'Remove'
+                li.appendChild(removeButton)
+                // create the remove button and append it into li.
+            }
+            todoInput.value = '';
+            // replacing the value with blank string.
+        })
+
+
+
+        todoitems.addEventListener('click',(e)=>{
+            if(e.target.textContent === 'Done'){
+                e.target.parentElement.classList.toggle('lineThrough')
+            }
+
+            else if(e.target.textContent === 'Remove'){
+                e.target.parentElement.remove();
+                // ekhane remove kono function noy ata holo add,remov,toggle er remove.
+            }
+          
+        })
+    </script>
+</body>
+</html>

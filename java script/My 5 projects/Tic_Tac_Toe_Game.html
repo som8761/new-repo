@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+<style>
+    .game {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    margin: auto;
+    margin-top: 50px;
+    width: 310px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="game">
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+        <div class="cell" onclick="handleClick(this)"></div>
+    </div>
+
+
+    <script>
+        let currentPlayer = "X";
+
+function handleClick(cell) {
+    if (!cell.textContent) {
+        cell.textContent = currentPlayer;
+        cell.classList.add(currentPlayer);
+        if (checkWinner(currentPlayer)) {
+            alert(`${currentPlayer} wins!`);
+            resetGame();
+        } else {
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+        }
+    }
+}
+
+function checkWinner(player) {
+    const winningCombos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6]            // Diagonals
+    ];
+
+    return winningCombos.some(combo => {
+        return combo.every(index => {
+            return document.getElementsByClassName('cell')[index].classList.contains(player);
+        });
+    });
+}
+
+function resetGame() {
+    const cells = document.getElementsByClassName('cell');
+    Array.from(cells).forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('X', 'O');
+    });
+    currentPlayer = 'X';
+}
+
+    </script>
+</body>
+</html>
