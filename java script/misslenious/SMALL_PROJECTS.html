@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMALL PROJECTS</title>
+</head>
+<style>
+    /* Add some styles to center the button and image */
+    /* body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    } */
+
+    /* random quote */
+    #QuoteContainer{
+        border: 1px solid #6666;
+        background-color: rgb(215, 166, 217);
+    }
+
+    /* jokes quote */
+    #JokesContainer{
+        border: 1px solid #6666;
+        background-color: rgb(169, 231, 237);
+    }
+    #DiceContainer{
+        border: 1px solid #6666;
+        background-color: rgb(169, 231, 237);
+    }
+</style>
+<body>
+    <!-- dice roller -->
+    <button id="diceButton">dice button</button>
+    <div id="DiceContainer"></div>
+    <br>
+    <br>
+    <br>
+    <!-- quote button -->
+    <button id="quote">quote button</button>
+    <div id="QuoteContainer"></div>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- quote button -->
+    <button id="jokesButton">jokes button</button>
+    <div id="JokesContainer"></div>
+
+    <!-- guessing the game: -->
+    <h1>Number Guessing Game</h1>
+    <h3>Guess The Number Between 1 to 100</h3>
+    <input type="number" id="inputField">
+    <button id="guess_btn" onclick="guessFunc()">submit</button>
+
+    <p id="feedback"></p>
+    <p id="attempts"></p>
+
+    <script>
+    
+        /*dice roller*/
+        
+        const diceButton = document.getElementById('diceButton')
+        const DiceContainer = document.getElementById('DiceContainer')
+       
+
+        function diceFunc(){
+            const random = Math.floor(Math.random() * 10) + 1;
+            DiceContainer.textContent = `you rolled : ${random}`
+        }
+
+        diceButton.addEventListener('click',()=>{
+            diceFunc();
+        })
+
+
+        /*Random Quote Generator: Create a webpage with a button. When you click the button, it displays a random quote from a predefined list of quotes.*/
+        const quotes = [
+        "The only way to do great work is to love what you do. - Steve Jobs",
+        "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
+        "The only thing we have to fear is fear itself. - Franklin D. Roosevelt",
+        "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+        "Life is what happens when you're busy making other plans. - John Lennon",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+        ]
+        const container = document.getElementById('container')
+        
+        function quoteFunc(quo){
+            // const randomIndex = Math.floor(Math.random() * quo.length) 
+            // const randomQuote = quotes[randomIndex]
+            // QuoteContainer.textContent = randomQuote;
+            for(let i = 0;i < quo.length; i++){
+                const randomIndex = Math.floor(Math.random() * quo.length)
+                const randomQuote = quotes[randomIndex]
+                QuoteContainer.textContent = randomQuote;
+            }
+        }
+        
+
+        const quotebutton = document.getElementById('quote')
+        
+        quotebutton.addEventListener('click',()=>{
+            quoteFunc(quotes);
+        })
+
+        /*summery :
+        amra quoteFunc a j quo diyte kaj ta korechi seta na dileo hoto tahole direct main j quotes ta acche seta diye kaj kortam..tahle noche addeventlistener a j quoteFunc a value hisabe quotes ta diyechi seta dite hotot na..but ekhane dite hoyeche karon upore functiona amra akta alada parameter niye kaj krechi..
+        
+        r akta jinis holo j 
+        "const randomQuote = quotes[randomIndex]"
+        ai line ta ..ata korte holo quotes er index ante .mane actually j lekha gulo ache segulo ante nahle to sudhu number mane index gulo aschilo..puro lekha aschilo na.
+        */
+
+
+
+
+        /*Random Joke Generator: Create a webpage with a button. When you click the button, it displays a random joke from a predefined list of jokes.*/
+
+        const jokes = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them.",
+        "Parallel lines have so much in common. It's a shame they'll never meet.",
+        "Why don't some couples go to the gym? Because some relationships don't work out.",
+        "Why don’t skeletons fight each other? They don’t have the guts.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "What do you call fake spaghetti? An impasta!",
+        "Why did the bicycle fall over? Because it was two-tired!",
+        "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+        "Why did the tomato turn red? Because it saw the salad dressing!",
+        ];
+
+
+      
+        // const JokesContainer = document.getElementById('JokesContainer')
+
+        // function jokesFunc(jo){
+        //     for(let i = 0; i < joke.length; i++){
+        //         const randomJokes = Math.floor(Math.random() * jo.length)
+        //         const jokesIndex = jo[randomJokes]
+        //         JokesContainer.textContent = jokesIndex;
+        //     }
+        //     // ekhane for loop ta use na kora tai better hobe.nihcer method ta best ai khetre.
+
+            // const randomJoke = Math.floor(Math.random() * jok.length)
+            // const randomIndex = jo[randomJoke]
+            // console.log(randomIndex);
+        // }
+
+        // const jokesButton = document.getElementById('jokesButton')
+        // jokesButton.addEventListener('click',()=>{
+        //     jokesFunc(jokes)
+        // })
+
+
+        function RandomJokesFunc(jo){
+        const randomJokes = Math.floor(Math.random() * jo.length);
+        const randomIndex = jo[randomJokes];
+        const createEle = document.createElement('div')
+        // const text = randomIndex; 
+        createEle.textContent = randomIndex;
+        JokesContainer.innerHTML = '';
+        JokesContainer.appendChild(createEle)
+        // empty container take replace kore dilam randomIndex er sathe mane ranodm jokes asbe.
+        // ami natok kore extra korlam element create kore nahle aro easyt kore upore dewa ache.
+        }
+        const jokesButton = document.getElementById('jokesButton')
+        const JokesContainer = document.getElementById('JokesContainer')
+
+        jokesButton.addEventListener('click',()=>{
+            RandomJokesFunc(jokes)
+        })
+
+        
+        
+        // const randomJokes = Math.floor(Math.random() * jokes.length);
+        // const randomIndex = jokes[randomJokes];
+        // // JokesContainer.textContent = randomIndex;
+        // document.write(randomIndex)
+        
+        
+
+
+        const sumarray = [1,4,35,6,89,56,6,32]
+        
+        function sumFunc(su){
+            let sum = 0;
+            for(let i = 0;i<su.length;i++){
+                sum = sum + su[i]
+            }
+            return sum;
+        }
+
+        console.log(sumFunc(sumarray));
+
+
+
+
+        /*Question 1 - Array Operations:
+
+        Create an array called numbers with elements [1, 2, 3, 4, 5].
+        Add the number 6 to the end of the array.
+        Print the length of the array.
+        Remove the first element from the array.
+        Print the array elements in reverse order.*/
+
+        
+        const number = [1,2,3,4,5]
+
+        // number.push(6)
+        // console.log(number)
+
+        function addNumber(add){
+            return add.push(6)
+        }
+
+        console.log(addNumber(number));
+        console.log(number)
+        console.log(`the length of the array is : ${number.length}`)
+
+
+
+        /*Question 2 - Function Calculation:
+
+        Write a function called calculateSum that takes two parameters a and b.
+        The function should return the sum of a and b.
+        Call the function with arguments 10 and 20 and print the result.*/
+        function calculateSum(a,b){
+            return a + b;
+        }
+
+        
+        // let a = 10;
+        // let b = 20;
+        
+        const sum = calculateSum(10,20)
+        console.log(`the result of the sum of a & b is : ${sum}`);
+
+        
+
+        /*Question 3 - Variable Swap:
+
+        Create two variables x and y and set their values to 5 and 10 respectively.
+        Swap the values of x and y using a third variable.
+        Print the values of x and y after swapping.*/
+        let z = 15;
+        let x = z;
+        let y = z;
+
+
+        console.log(x);
+        console.log(y);
+
+
+
+        
+
+        /*Question 4 - Random Number:
+
+        Generate a random number between 1 and 10 (inclusive) using Math.random().
+        Round the random number to the nearest integer using Math.round().
+        Print the rounded random number.*/
+
+
+        // const randomNumber = Math.round(Math.random() * 10) +  1
+
+        // console.log(randomNumber);
+
+
+
+        /*ekta array banalam jetar modhe randomly numbers print hoche.*/
+        /*i have create an array which is randomly generate numbers on that*/
+        const array = []
+        
+        let length = 5
+        for(let i = 0;i < length;i++){
+            const randomNumber = Math.floor(Math.random() * 10) +  1
+            array.push(randomNumber)
+        }
+
+        console.log(array);
+
+
+
+
+
+        /*Question 5 - Loops:
+
+        Write a loop that prints the numbers from 1 to 10 (inclusive) on separate lines.
+        Write a loop that prints the even numbers from 2 to 20 (inclusive) on separate lines.
+        Write a loop that calculates the sum of numbers from 1 to 100 and prints the result.*/
+
+        for(let i = 1;i <= 10;i++){
+            console.log(i);
+        }
+
+        console.log('even numbers');
+
+        for(let i = 0;i <= 20;i++){
+            if(i % 2 == 0){
+                console.log(i);
+            }
+        }
+
+        function sumFunction(){
+            let sum = 0
+
+            for(let i = 0;i <= 100;i++){
+            sum = sum + i;
+            }
+            return sum;
+        }
+
+        console.log(sumFunction());
+
+        // console.log(sum2);
+
+
+
+        /*Even or Odd: Write a function that takes a number as input and returns whether the number is even or odd.*/
+        const num = prompt('enter the number')
+5
+        function EvenOrOdd(eo){
+            // Convert the input string to a number
+            eo = Number(eo);
+
+            if(eo % 2 == 0){
+                console.log('its an even number');
+            }
+            else{
+                console.log('its an odd number');
+            }
+        }
+
+        EvenOrOdd(num)
+
+
+        /*Array Sum: Write a function that takes an array of numbers as input and returns the sum of all the numbers in the array.*/
+        const sumArray = [2,4,7,8,7,9,6,45,12]
+
+        function arrSum(arr){
+            let sum = 0;
+            for(let i = 0;i < arr.length;i++){
+                sum = sum + arr[i];
+            }
+            return sum;
+        }
+
+        console.log(arrSum(sumArray));
+
+
+
+        /*String Reversal: Write a function that takes a string as input and returns the reversed version of the string.*/
+        const wordsArray = ["apple", "banana", "cherry", "grape", "orange", "pear"];
+
+        console.log(wordsArray.reverse());
+
+
+ 
+
+
+        /*guess the number game*/
+
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        const guess_btn = document.getElementById('guess_btn')        
+        // const inputField = document.getElementById('inputField')
+
+        // guess_btn.addEventListener('click',()=>{
+        //     const userguess = parseInt(document.getElementById('inputField').value)
+        //     document.getElementById('inputField').value = ''
+
+            
+        //     attempts++;
+
+        //     if(userguess === randomNumber){
+        //         document.getElementById('feedback').textContent = 'congratulations you have entered the right number.'
+        //     }
+        //     else if(userguess  < randomNumber){
+        //         document.getElementById('feedback').textContent = 'you have entered lower number!please try again'
+        //     }
+        //     else{
+        //         document.getElementById('feedback').textContent = 'you have entered higher number!please try again'
+        //     }
+            
+
+        // })
+
+        function guessFunc(){
+            const userguess = parseInt(document.getElementById('inputField').value)
+            document.getElementById('inputField').value = ''
+
+            attempts++
+
+            /*ekhane kichu specific jinis 1 er thke kom ba 100 r thke bashi jinis gulo ke alada kore dekhanor jonno kora holo r return statement amake help krolo ekhane..karon execution baki faltu jinis gulo bondho kore day return statement.*/
+            // isNaN() = is not a number
+
+            if(isNaN(userguess) || userguess < 1 || userguess > 100){
+                document.getElementById('feedback').textContent = 'please enter the number between 1 to 100'
+                return;
+            }
+          
+            /*the return statement is helping me to leave out the further thing except the right one?*/
+            attempts++;
+
+            if(userguess === randomNumber){
+                document.getElementById('feedback').textContent = 'congratulations you have entered the right number.'
+                document.getElementById('attempts').textContent = `you have taken : ${attempts} attempts`
+            }
+            else if(userguess  < randomNumber){
+                document.getElementById('feedback').textContent = 'you have entered lower number!please try again'
+            }
+            else{
+                document.getElementById('feedback').textContent = 'you have entered higher number!please try again'
+            }
+            
+        }
+
+
+       
+
+
+ 
+    </script>
+</body>
+</html>
