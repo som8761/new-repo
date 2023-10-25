@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>strings_methods</title>
+</head>
+<body>
+    strings_methods
+</body>
+<script>
+
+    /*string is immutable that means no one can change a string you can create a new string 
+    but you cant change any string ..*/
+
+
+
+     let harry = "harr\"y"
+    console.log (harry.length)/*its not a function*/
+
+
+    console.log(harry.toLowerCase())
+    console.log(harry.toUpperCase())
+    /*its a function*/
+
+
+
+    console.log(harry.slice(2,4))
+    /*its also a function but we need to give it parameters
+    and ,2 means fom where it starts and 4 means where its end..4 er age obdi 
+    ata sesh hobe...mane last er value ta jeta thakbe setar ager number obdi jabe..
+    jamn akhane 4 ache tai 3 obdi jadi ex 8 thakto tahole 7 obdi jato..*/
+
+
+    console.log(harry.slice(2))
+    /*jadi amra aktai parameter diy slice a tahole jei number ta dabo sekhan thke suru 
+    kore akdm last word obdi jabe..jadi as ex: 40 ta word thke themn 40 tai jabe..if we 
+    give it just one parameter..*/
+
+
+    let harryBhai = "harryBhai"
+    console.log(harryBhai.replace('Bhai','bhau'))
+    /*i replaced the bhai to bhau(, is most important here)*/
+
+
+    let name = "somnath"
+    let name2 = "bhaskar"
+    // console.log(name + " is a friend of "+ name2 + " ok")
+    console.log(name.concat(" is a friend of ",name2 , " ok" ))
+    /*ekhane jst name.concat diye amra  nam er variable take paye galam.. */
+
+
+
+
+    let name3 = "               trim                 "
+    // console.log(name3) 
+    console.log(name3.trim())
+
+
+    let friend = "malik"
+
+    // console.log(friend[0])
+    // console.log(friend[1])
+    // console.log(friend[2])
+    // console.log(friend[3])
+    // console.log(friend[4])
+
+    /* ei jinis take j amra bar bar korchi seta theke mukti pawar jonno amra loop 
+    use kori jeta niche exaple diye dakhiye dilam..*/
+
+
+    /*example*/
+    
+    /*for loop example*/
+    let Name  = "malik"
+    
+    for (i = 0 ; i <= Name.length ; i++ ){
+        console.log(`${name[i]}`)
+        
+    }
+
+
+    console.log('             ')
+    console.log('             ')
+
+
+
+    /*for in loop example*/
+
+
+    for (key in Name){
+        console.log(Name[key])
+    }
+
+
+    let age = {
+        som : 12,
+        som1 : 15
+    }
+    for (key in age){
+        console.log(`the marks of ${key} are `+ age[key])
+    }
+    // name(variable ba array r ) er modhe  j key gulo ache seta likhlam ..
+    // $ diye jadi {} diye key likhi tahole bairer key gulo asbe r jadi [] diye likhi tahole 
+    // vetorer value gulo asbe...
+
+    
+    console.log('             ')
+    console.log('             ')
+
+
+    /*for of loop example*/
+
+    for ( key of Name){
+        console.log(key)
+    }
+
+   
+   /*for in loop r for of loop er modeh deffience holo
+   for in loop ke amader [] er dorkaer hoy but of loop a jst j name ta thake tar pashe 
+   mane of er age j name ta thake seta(key) seta likhe dilei name namik variable er 
+   print hoye jay*/ 
+
+
+
+
+   let player = {
+
+    messi : 'footbal',
+    virat : 'cricket',
+    somnath : 'hockey'
+   }
+
+   for (n in player){
+    console.log(`${n} is a  ${player[n]} player `)
+   }
+    //    ata actually for in loop er khetre use korai better bekar for loop use kore jhamlea 
+    // bariye lav nai...
+
+
+
+    let player1 = ["messi","ronaldo"]
+
+    player1.forEach((pa)=>{
+        console.log(pa)
+       
+    })
+
+
+</script>
+</html>

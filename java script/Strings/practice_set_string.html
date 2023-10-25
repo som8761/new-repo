@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--(1) what will be the following print in java script
+    console.log ("har\"") -->
+
+    <!-- (2) explore the includes, starts with and ends with functions in js-->
+
+    <!--(3) write a program to convert a given string to lowercase  -->
+
+    <!-- (4) extract the amount out of this string  
+    "please give ruppees 1000" -->
+
+    <!-- (5)  try to change 4th character of a given string 
+    were you able to do it? -->
+
+</body>
+<script>
+    // 1
+    let harry = "har\""
+    console.log("har\"".length)
+
+
+    // 2
+
+    let text = "hello world ,welcome to the universe";
+
+    console.log(text.includes("world")) ;
+    // true
+
+    console.log(text.includes("world",12))
+    // false
+
+    console.log(text.includes("welcome to the"))
+    // true
+
+
+    /*strats with and ends with*/
+    console.log(text.startsWith("hello"))
+    // true
+
+    console.log(text.endsWith("universe"))
+    // true
+
+
+
+    // (3)
+    let som = "somnath"
+    console.log(som.toUpperCase())
+    /*jadi amra pashe () na lagai tahole kaj korbena ota*/
+
+
+
+
+    // 4
+
+    let thousand = "please give rupees 1000"
+
+    console.log(thousand.slice(4,23))
+
+
+    // 5
+
+    let fourth = "fourth"
+
+    console.log(fourth.replace('t','5'))
+</script>
+</html>

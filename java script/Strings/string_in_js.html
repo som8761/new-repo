@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string_in_js.html</title>
+</head>
+<body>
+    string
+</body>
+<script>
+    let name = "string"
+    console.log(name)
+    console.log(name.length)
+    /*length 6 ta*/
+
+    /* dont write dobule and single cotation together*/
+
+
+    console.log((name[0]))
+    console.log((name[1]))
+    console.log((name[2]))
+    console.log((name[3]))
+    console.log((name[4]))
+    console.log((name[5]))
+    /*ekhane amra () er modhe name take rakhlam ..actually 
+    name and [] dutokei rakhlam ..r [] a jeta thakbe seta amader
+    vetorer value ta provide korbe..*/
+
+
+    /*string er j ginti ba index seta 0 thekei start hoy..j 
+    baniyechilo se 0 thkei korechilo tai seta constant.*/
+
+
+
+
+    /*templates literals:*/
+    
+    let boy1 = "somnath"
+    let boy2 = "momo"
+    
+    let sentence = (`${boy1} is a friend of ${boy2}`)
+    console.log(sentence)
+    
+    // ekhane amra bacticks use kori,, na korleo hoy actually,,
+    // $dile amader kaj ta soja hoye jay..r amra bacticks dile double r
+    // single quote dutoi use krte pari..bt aksthe noi..
+
+
+
+    /*escape sequence characters*/
+    
+    let fruit = 'bana\'na' 
+    console.log(fruit)
+    console.log(fruit.length)
+    // (\') ai duto miliye akta character.
+
+    /*
+    akta single quote er modhe jadi r akta single quote lagate 
+    chai tahole backclash(\) and then single quote(') dite pari..
+    abar jadi amra console.log.length o kori tahole 8 tar 
+    jaygay 7 tai asbe..(\') ke niye 7 ta..
+    
+
+    it is usable for double quote("") as well */
+    let harry = "harr\"y"
+    console.log (harry.length)
+
+
+    /*
+    \n= n for newline
+    \t = tab
+    \r = carriage return
+    */
+     
+
+   
+  
+</script>
+</html>
