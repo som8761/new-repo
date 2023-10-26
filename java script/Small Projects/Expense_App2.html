@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense App</title>
+</head>
+<style>
+    main{
+        background-color: #50464666;
+        border: solid 1px rgb(176, 166, 166);
+        border-radius: 10px;
+        width: 30em;
+        margin: 10px auto;
+        padding: 1em 3em 4em; 
+        min-height: 10em;
+    }
+    form{
+        width: 40%;
+        margin: 0 auto;
+        /* border: 1px solid red; */
+    }
+    #expense_list{
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    label{
+        display: block;
+        margin-bottom: 0.8em;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    input{
+        display: block;
+        margin-bottom: 1em;
+        height: 1.6em;
+    }
+    #date{
+        width: 12em;
+    }
+    button{
+        padding: 4px;
+        border-radius: 6px;
+    }
+    button:hover{
+        background-color: rgb(133, 123, 123);
+        color: white;
+    }
+
+
+
+/* css a problem er jonno cholche na  css ta thik kore lagate hobe*/
+</style>
+<body>
+   <main>
+    <form id="expense_form">
+        <label for="Expense">Expense:</label>
+        <input type="text" id="expense" placeholder="Enter Expense Name" required>
+        <label for="Amount">Amount:</label>
+        <input type="Number" id="amount" placeholder="Enter Amount" >
+
+        <label for="Date">Date:</label>
+        <input type="date" id="date" >
+
+        <button  id="addExpense">Add EXpense</button>
+        
+    </form>
+
+    <div id="expense_list">
+        <!-- expenses will be displayed here -->
+    </div>
+   </main>
+
+    <script>
+        
+
+        // // const addExpense = document.getElementById('addExpense')
+        // const expense_form = document.getElementById('expense_form') 
+        // const expense_list = document.getElementById('expense_list')
+
+        // expense_form.addEventListener('submit',addExpense)
+
+        // function addExpense(event){
+        //     event.preventDefault();
+
+        //     const expenseName = document.getElementById('expense').value;
+        //     const amountAmount = parseFloat(document.getElementById('amount').value);
+
+        //     if(expenseName && amountAmount){
+        //         const expenseItem = document.createElement('div')
+        //         expenseItem.innerHTML = `
+        //         <h3>${expenseName}</h3>
+        //         <p>${amountAmount.toFixed(2)}</p>
+        //         `
+                
+        //         expense_list.appendChild(expenseItem)
+
+
+        //         document.getElementById('expense').value = ''
+        //         document.getElementById('amount').value = ''
+        //     }
+
+        // }
+
+
+
+       const addExpense = document.getElementById('addExpense')
+       const expense_list = document.getElementById('expense_list')
+
+
+       addExpense.addEventListener('click',ExpenseFunc)
+        // submit event use korle date tar value espense list a update hoche na tai amader click event er use korte holo.
+       
+        function ExpenseFunc(event){
+            event.preventDefault();
+
+            const expenseName = document.getElementById('expense').value
+            const amountName = parseFloat(document.getElementById('amount').value)
+            const dateName = document.getElementById('date').value
+
+            // const array = [expenseName,amountName,dateName]
+            // if er modhe orom && diye ogulo add na kore aroma kta array baniye array tar name ta if a likhe korte partam.
+           
+            if(expenseName === '' || amountName === '' || dateName === ''){
+                alert('you must write something')
+            }
+            else if(expenseName && amountName && dateName){
+                const expenseItem = document.createElement('div')
+                expenseItem.innerHTML = `
+                    <h3>${expenseName}</h3>
+                    <p>${amountName}</p>
+                    <p>${dateName}</p>
+                `
+                expense_list.appendChild(expenseItem)
+
+                document.getElementById('expense').value = ''
+                document.getElementById('amount').value = ''
+                document.getElementById('date').value = ''
+            }
+
+        }
+
+    </script>
+</body>
+</html>

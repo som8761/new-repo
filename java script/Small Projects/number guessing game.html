@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numnber guessing game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <label for="guess">Guess:</label>
+    <input type="number" id="NumberInputField" placeholder="write the number">
+    <button id="btn">submit</button>
+    <div id="feedback"></div>
+    <div id="attempts"></div>
+
+
+
+    <script>
+        /*generating the random number for the number guessing game*/
+        const randomNumber = Math.floor(Math.random() * 100)+1
+
+        /*refference for elements*/
+        const btn = document.getElementById('btn')
+        const feedback = document.getElementById('feedback')
+        // const attempts = document.getElementById('attempts')
+        
+        // all the attempts will be store here.
+        let attempts = 0
+        btn.addEventListener('click',()=>{
+            attempts++;
+            const NumberInputField = parseInt(document.getElementById("NumberInputField").value)
+            document.getElementById("NumberInputField").value = ''
+            
+            if(NumberInputField === randomNumber){
+                feedback.textContent = `congratulations you have enter the right number! ${NumberInputField}`
+                document.getElementById('attempts').textContent = `you have taken ${attempts} attempts`
+            }
+            else if(NumberInputField < randomNumber){
+                feedback.textContent = `you have enter the lower number!`
+            }
+            else{
+                feedback.textContent = `you have enter the higher number!`
+            }
+            
+        })
+    </script>
+</body>
+</html>

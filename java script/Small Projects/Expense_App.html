@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense App</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label, form input, form button {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Expense Tracker</h1>
+    </header>
+    <main>
+        <form id="expense-form">
+            <label for="expense">Expense:</label>
+            <input type="text" id="expense" placeholder="Enter expense name" required>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+            <button type="submit">Add Expense</button>
+        </form>
+        <div id="expense-list">
+            <!-- Expenses will be displayed here -->
+        </div>
+    </main>
+    <script>
+        const expenseForm = document.getElementById("expense-form");
+        const expenseList = document.getElementById("expense-list");
+
+        expenseForm.addEventListener("submit", addExpense);
+
+        function addExpense(event) {
+            event.preventDefault();
+
+            const expenseName = document.getElementById("expense").value;
+            const expenseAmount = parseFloat(document.getElementById("amount").value);
+
+            if (expenseName && expenseAmount) {
+                const expenseItem = document.createElement("div");
+                // expenseItem.classList.add("expense-item");
+                expenseItem.innerHTML = `
+                    <h3>${expenseName}</h3>
+                    <p>${expenseAmount.toFixed(2)}</p>
+                `;
+
+                expenseList.appendChild(expenseItem);
+
+                document.getElementById("expense").value = "";
+                document.getElementById("amount").value = "";
+            }
+        }
+
+    </script>
+</body>
+</html>

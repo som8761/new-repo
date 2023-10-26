@@ -1,0 +1,100 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(195, 231, 219);
+    padding: 40px;
+    line-height: 1.9rem;
+}
+
+.accordian{
+    background-color: aliceblue;
+    padding:4px 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border-radius:12px;
+}
+
+.question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.icon{
+    font-size: 1.9rem;
+    margin-right: 1.4rem;
+    transition: transform 0.5s;
+    /* ekhane mone rakhtre hbe j ata active class a dile hbena ekhanei main ta tei dite hobe. */
+}
+
+
+/* active class for icon */
+.active.icon{
+    transform: rotate(-180deg);
+   
+}
+
+
+.answer{
+    color: #666;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.7s;
+    /* main tatei dilam active a dile hbe na transition. */
+}
+
+/* active class for answer */
+.active.answer{
+    max-height: 95px;
+    /* max-height: fit-content; */
+    /* max-height: max-content; */
+    /* ata best.bt ami bojhar jonno 95 px korlam */
+
+    /* ekhane jadi ami max-content ta max-height a lagai tahole transition ta kaj korbe na.karon css akhane define korte parcghe na j kon state thke kon state porjonto transition. kaj korbe..bad baki ja khusi lagai kaj korbe..amara alada kore height ta define korlam seta transition a kaj korlo.
+    kintu majhe majhe answer jadi onek boro hoy tahole max-height ta onk boro dite hoy ..tokhn transition ta valok kore kaj korbe na..tai amara jadi scroll height er use kori tahole valo hoy,but css a scroll height available thkena. e seta bojhar jonno video ta dakhte hbe last er part
+    */
+}
+
+
+
+/* (mone rakhte hobe airom bhbe duto class ke aksthe likhte hbe kono space dabo na)..ekhane ami ata bujhlam j aksthe na kore jadi alada alada kore kori tahole ki problem face korte hoy. */
+
+
+
+
+
+
+/* ekhane sob amr khatnir fol */
+
+
+/* accordian2 */
+/* .accordian2{
+    background-color: aliceblue;
+    padding:4px 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border-radius:12px;
+} */
+
+
+
+/* icon2 */
+/* .icon2{
+    font-size: 1.9rem;
+    margin-right: 1.4rem;
+} */
+
+
+/* answer2 */
+/* .answer2{
+    color: #666;
+    max-height: 0px;
+    overflow: hidden;
+} */
+
+
+/* active answer 2 */
+/* .active.answer2{
+    max-height: 95px;
+} */

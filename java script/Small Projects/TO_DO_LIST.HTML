@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List App</title>
+  <style>
+    /* Add some basic styling to the to-do list */
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    #todoList{
+      border: solid 1px black;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <input type="text" id="todoInput" placeholder="Enter a to-do item">
+  <button id="addTodo">Add</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    // Initialize an empty array to store the to-do items
+    // let todoList = [];
+
+    // function addTodo() {
+    //   // Get the value from the input field
+    //   let item = document.getElementById("todoInput").value;
+      
+    //   // Add the item to the todoList array
+    //   todoList.push(item);
+      
+    //   // Clear the input field
+    //   document.getElementById("todoInput").value = "";
+      
+    //   // Display the updated todoList
+    //   displayTodoList();
+    // }
+
+
+
+
+
+    // Initialize an empty array to store the to-do items
+    let todoList = [];
+
+    let addTodo = document.getElementById('addTodo');
+
+    addTodo.addEventListener('click',()=>{
+      // Get the value from the input field
+      let item = document.getElementById("todoInput").value;
+      
+      // Add the item to the todoList array
+      todoList.push(item);
+      
+      // Clear the input field
+      document.getElementById("todoInput").value = "";
+      
+      // Display the updated todoList
+      displayTodoList();
+    })
+
+    
+
+    function removeTodo(index) {
+      // Remove the item from the todoList array at the specified index
+      todoList.splice(index, 1);
+      // ekhane index mane represent korche todoList er modhe thaka index ta.ekhane todoList.splice mane todoList er modhe kar jinis gulo remove hbe.todolist er vatorer jinis mane index remove hbe.
+
+      
+      // Display the updated todoList
+      displayTodoList();
+    }
+
+
+    
+
+    function displayTodoList() {
+      // Get the todoList element
+      let todoListElement = document.getElementById("todoList");
+      
+      // Clear the previous items
+      todoListElement.innerHTML = "";
+      // ata use korar thke for each loop ta use kora bashi convanient here.
+      
+      // Loop through the todoList array and create list items 
+      
+      // for (let i = 0; i < todoList.length; i++) {
+      //   let item = todoList[i];
+        
+      //   // Create a list item element
+      //   let listItem = document.createElement("li");
+        
+      //   // Create a text node with the item text
+      //   let itemText = document.createTextNode(item);
+        
+      //   // Create a remove button element
+      //   let removeButton = document.createElement("button");
+      //   removeButton.innerHTML = "Remove";
+        
+      //   // Add a click event listener to the remove button
+      //   removeButton.addEventListener("click", function() {
+      //     removeTodo(i);
+      //   });
+        
+      //   // Append the item text and remove button to the list item
+      //   listItem.appendChild(itemText);
+      //   listItem.appendChild(removeButton);
+        
+      //   // Append the list item to the todoList element
+      //   todoListElement.appendChild(listItem);
+      // }
+
+      todoList.forEach((item) => {
+      // Create a list item element
+      let listItem = document.createElement("li");
+      
+      // Create a text node with the item text
+      let itemText = document.createTextNode(item);
+      
+      // Create a remove button element
+      let removeButton = document.createElement("button");
+      removeButton.innerHTML = "Remove";
+      
+      // Add a click event listener to the remove button
+      removeButton.addEventListener("click", function() {
+        removeTodo(todoList.indexOf(item));
+      });
+      
+      // Append the item text and remove button to the list item
+      listItem.appendChild(itemText);
+      listItem.appendChild(removeButton);
+      
+      // Append the list item to the todoList element
+      todoListElement.appendChild(listItem);
+    });
+
+
+
+      
+    }
+
+    /*summery :
+
+    // why we use the .value in js:
+    In JavaScript, the .value property is used to retrieve or set the current value of an input field or other form elements. The value returned by .value depends on the type of the form element. Here are some examples:
+
+    For <input> elements:
+
+    For <input type="text">, <input type="password">, and <input type="number">, the .value property returns the entered text or numeric value as a string.
+    For <input type="checkbox"> and <input type="radio">, the .value property returns the value attribute of the selected checkbox or radio button.
+    For <input type="file">, the .value property is read-only and typically returns the file name of the selected file.
+    For <select> elements:
+
+    For <select> elements, the .value property returns the value attribute of the selected <option>.
+    For other form elements like <textarea>, the .value property retrieves or sets the text content within the element.
+
+
+
+    //.value = " " (empty string use kano kori?) 
+
+    In JavaScript, setting the .value property of an input field to an empty string ("") using the assignment operator (=) is a way to clear or reset the value of the input field.
+
+    Here's how it works:
+
+    When you set .value to an empty string (""), you are effectively replacing the current value of the input field with an empty value, clearing any text or previous value that was entered.
+    By assigning "" to .value, you are resetting the input field to an empty state, ready for the user to enter new input.
+    Setting the value of an input field to an empty string can be useful in various scenarios, such as:
+
+    Clearing the input field after submitting a form: It ensures that the input field is empty and ready for the user to enter a new value after submitting a form.
+    Resetting the input field after a specific action: For example, you may want to clear the input field after successfully adding an item to a to-do list.
+    Providing a clean slate for the user: Clearing the input field can improve the user experience by removing previous input and making it easier for the user to enter new values.
+    In summary, setting .value to an empty string in JavaScript is a way to clear or reset the value of an input field, providing a fresh starting point for new input.
+    */
+
+  </script>
+</body>
+</html>

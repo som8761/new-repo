@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add to cart</title>
+</head>
+<style>
+    .cart{
+        border: 1px solid #7c6c6c;
+        height: 200px;
+        display: none;
+       
+    }
+    .active.cart{
+        display: block;
+        
+    }
+    .cart-items{
+        border: 1px solid #110f0f;
+        height: 100px;
+        width: 80%;
+        /* min-height: auto; */
+        overflow: scroll;
+        margin: 0 auto;
+    }
+
+    
+</style>
+<body>
+
+    <!-- j item gulo available ache r agulo store hobe kono jaygay -->
+    <h2>Available Items</h2>
+
+    <ul>
+        <li id="item1">item-1<button class="addToCartButtons">Add to cart</button></li>
+        <li id="item2">item-2<button class="addToCartButtons">Add to cart</button></li>
+        <li id="item3">item-3<button class="addToCartButtons">Add to cart</button></li>
+    </ul>
+    <hr>
+
+    <!-- items gulo akhane store hobe mane ata holo cart -->
+
+    <h2>Shoppoing Cart</h2>
+
+    <button id="togglecart">togglecart</button>
+
+
+    <div class="cart ">
+        <h3>cart-contents</h3>
+        <div class="cart-items">
+            <!-- er modhe cart item gulo ashe store hobe -->
+            
+        </div>
+    </div>
+
+    <script>
+
+        /*target korlam...ato tar modhe amader khali j cart option ta ache seta ke show r hide (toggle krlam) */
+
+        // shopping cart er puro jinista ata starget kore holo.
+        let togglecart = document.getElementById('togglecart')
+        let cart = document.querySelector('.cart')
+        // cart items er jini ta ata target kore alo.
+        let cart_items = document.querySelector('.cart-items') 
+
+        // visible hoche cart box ta
+        togglecart.addEventListener('click',()=>{
+            cart.classList.toggle('active')
+        })
+
+
+        // target krlam addtocart button gulo ke
+        let addToCartButtons = document.querySelectorAll('.addToCartButtons')
+
+        addToCartButtons.forEach((somnath)=>{
+            somnath.addEventListener('click',addtocart)
+
+
+            function addtocart(som){
+                let text = som.target.parentElement.firstChild.textContent
+                
+                let newItem = document.createElement('div')
+                newItem.className = "cart-item";
+                newItem.textContent = text
+                cart_items.appendChild(newItem)
+            }
+        })
+        // sob thke main akhane holo cart items take target kora.karon j sob item gulo append hoye jache cart-items er vatore..
+    </script>
+    
+</body>
+</html>

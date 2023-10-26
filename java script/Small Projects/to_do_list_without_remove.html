@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-LIST</title>
+</head>
+<style>
+    ul{
+        border: solid 1px black;
+    }
+    li{
+        margin-bottom: 5px;
+    }
+</style>
+<body>
+
+    <h1>TO-DO-LIST</h1>
+    z
+    <input type="text"  id="todoInput" placeholder="To-Do-Items">
+
+    <button id="todobutton">Add</button>
+
+    <ul id="todoList">
+        <!-- the to do items will be updated here once user input something in the input field -->
+    </ul>
+
+
+    <script>
+        const todoList  = [];
+
+        // target korlam sei button ke jar mdhe click korle sob kaj ta hoche..mane add namok button(todobutton).
+        const todobutton = document.getElementById('todobutton');
+
+        todobutton.addEventListener('click',()=>{
+            // .value dile ja kichu user input field a ikhbe seta .value te dhuke jabe.
+            const input = document.getElementById('todoInput').value;
+
+            // dhukiye dilam todolist namok blank array te 
+            todoList.push(input);
+
+            document.getElementById('todoInput').value = "";
+            // .value = "" ,atar mane holo user j jinista likhechilo seta ai empty string er dara replace hoye galo.. ..setao abar blank string .jadi kichu likhe ditam tahole blank thkto na sei lekha ta diye replace hoye jato.
+
+
+            ToDisplayToDoList();
+            
+        })
+
+
+        function ToDisplayToDoList (){
+            // target korlam puro todoList take ,karon jar modhe todoitems gulo ke dhokabo take to target korte hbe.
+            const todoListBox = document.getElementById('todoList')
+
+            // todoList er innerHTML ke blank string er sathe replace kore dilam.
+            todoListBox.innerHTML = "";
+
+            // for each er dara each and every element take itterate korlam.
+            todoList.forEach((item)=>{
+
+                // 'li' tag er create korlam
+                const ListItem = document.createElement('li');
+
+                // li tag er modhe text add korlam jeta asche oi todoList namok array thke..akhane jato gulo item add hbe foreach sei each and evry element ke diye kaj korbe.
+                const ListText = document.createTextNode(item)
+
+                // dhukiye dilam li er modhe text ke.
+                ListItem.appendChild(ListText)
+
+                // dhukiye dilam todoListBox er modhe li ke.
+                todoListBox.appendChild(ListItem)
+            })
+        }
+
+    </script>
+</body>
+</html>

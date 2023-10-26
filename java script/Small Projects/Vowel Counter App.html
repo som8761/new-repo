@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter App</title>
+</head>
+<style>
+    body{
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    main{
+        border: solid #666 1px;
+        margin: 2em auto;
+        width: 30em;
+        text-align: center;
+        padding: 6em;
+        border-radius: 7px;
+        border: solid 1px rgb(163, 9, 234);
+    }
+    h1{
+        color: rgb(163, 9, 234);
+    }
+    input{
+      width: 21em;
+      padding: 0.6em;
+      margin-bottom: 2em;
+      font-size: 18px;
+      border-radius: 6px;
+      border: solid 1px rgb(163, 9, 234);
+    }
+    label{
+        font-size: 21px;
+        font-weight: 700;
+    }
+    button{
+        display: block;
+        width: 6em;
+        margin: auto;
+        padding: 0.7em;
+        border-radius: 6px;
+        background-color:  rgb(163, 9, 234);
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    button:hover{
+        background-color: white;
+        color: rgb(163, 9, 234);
+        border: solid 1px  rgb(163, 9, 234);
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+
+</style>
+<body>
+    <main>
+    <h1>Vowel Counter App</h1>
+    <label for="Vowel">Vowel</label>
+    <input type="text" id="vowelInput" placeholder="Write Anything">
+    <button id="vowelBtn">Check</button>
+
+    <div id="list">
+
+    </div>
+    </main>
+
+    <script>
+        const vowelBtn = document.getElementById('vowelBtn')
+        const list = document.getElementById('list')
+        
+        vowelBtn.addEventListener('click',(event)=>{
+            event.preventDefault()
+            
+            const vowelInput = document.getElementById('vowelInput').value;
+            // vetore newata dorkar karon jakhn button click hobe takhn er value ta capture hobe baire thakle to seta hobe na.
+
+
+            // test r match er modhe atai differnece j test boolean a return kore r match akta array return kore.
+            const vowel = /[aeiou]/gi;
+            const vowelMatches = vowelInput.match(vowel)
+            // vowel matches vowel er j value seta theke vowel gulo ke alada kore diche match function er dara.
+
+            if(vowelMatches && vowelMatches.length > 0){
+                alert(`vowel found: ${vowelMatches} (${vowelMatches.length} vowels)`)
+                // ekhane join method er dara ', ' take joinn kore diche r vowel.length er dara vowelMatches er length bole diche.exactly vowelMatches er length (vowel joto gulo ache)bole diche.
+            }
+            else{
+                alert(`No Vowels Found`)
+            }  
+
+            document.getElementById('vowelInput').value = '';
+
+        })
+
+        // jadi alert diye na korte chai tahole comment out gulo ke hatiye dite pari.
+        
+    </script>
+
+
+
+    <!-- 
+    const vowel = /[aeiou]/gi; // Using regular expression to match vowels globally (case-insensitive)
+    const vowelMatches = vowelInput.match(vowel);
+                    
+    // resultMessage = '';
+
+        if (vowelMatches && vowelMatches.length > 0) {
+            // resultMessage = `Vowels found: ${vowelMatches.join(', ')} (${vowelMatches.length} vowels)`;
+                alert(`Vowels found: ${vowelMatches.join(', ')} (${vowelMatches.length} vowels)`)
+                } else {
+                    // resultMessage = 'No vowels found';
+                    alert('No vowels found')
+                }
+
+                // const resultElement = document.createElement('div');
+                // resultElement.textContent = resultMessage;
+                // list.appendChild(resultElement);
+
+                document.getElementById('vowelInput').value = '';
+        -->
+</body>
+</html>

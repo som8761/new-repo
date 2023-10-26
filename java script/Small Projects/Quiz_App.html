@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.quiz {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.question {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.score {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+</style>
+<body>
+    <div class="quiz">
+        <h2>Quiz App</h2>
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+        <button onclick="checkAnswer()">Submit</button>
+        <div class="score" id="score"></div>
+    </div>
+
+
+    <script>
+        const questions = [
+    {
+        question: "What is the capital of France?",
+        options: ["London", "Berlin", "Paris", "Rome"],
+        answer: "Paris"
+    },
+    {
+        question: "What is 7 + 3?",
+        options: ["9", "10", "11", "12"],
+        answer: "10"
+    },
+    {
+        question: "Which planet is known as the 'Red Planet'?",
+        options: ["Venus", "Mars", "Jupiter", "Saturn"],
+        answer: "Mars"
+    }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function showQuestion() {
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const question = questions[currentQuestionIndex];
+
+    questionElement.textContent = question.question;
+    optionsElement.innerHTML = '';
+
+    for (let option of question.options) {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.addEventListener('click', function () {
+            checkAnswer(option);
+        });
+        optionsElement.appendChild(button);
+    }
+}
+
+function checkAnswer(selectedOption) {
+    const question = questions[currentQuestionIndex];
+    if (selectedOption === question.answer) {
+        score++;
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        showScore();
+    }
+}
+
+function showScore() {
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Your score: ${score} out of ${questions.length}`;
+}
+
+// Start the quiz
+showQuestion();
+
+    </script>
+</body>
+</html>

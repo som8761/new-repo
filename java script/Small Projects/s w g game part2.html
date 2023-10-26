@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake water gun game</title>
+</head>
+<body>
+    <input type="text"  id="inputField">
+    <button id="btn">submit</button>
+    <div id="text"></div>
+
+    <script>
+     
+        const btn = document.getElementById('btn')
+        const text = document.getElementById('text')
+
+
+       
+        const computerIndex = Math.floor(Math.random() * 3)
+        const computer = ['snake','water','gun'][computerIndex]
+        // ai  duto jinis keo vatore rakhte partam but baire rakhlam kintu .value er jinis guloke vatore rakha mandetory.
+
+
+        btn.addEventListener('click',()=>{
+            const user = document.getElementById('inputField').value;      
+            document.getElementById('inputField').value = '';   
+            
+
+
+            function match(user,computer){
+            
+            if(user === computer){
+                text.textContent = `Match is tied`
+                
+            }
+            else if(user === 'snake' && computer === 'water'){
+                text.textContent = `computer is the winner`
+            }
+            else if(user === 'water' && computer === 'snake'){
+                text.textContent = `user is the winner`
+            }
+            else if(user === 'snake' && computer === 'gun'){
+                text.textContent = `computer is the winner`
+            }
+            else if(user === 'gun' && computer === 'snake'){
+                text.textContent = `user is the winner`
+            }
+            else if(user === 'water' && computer === 'gun'){
+                text.textContent = `user is the winner`
+            }
+            else if(user === 'gun' && computer === 'water'){
+                text.textContent =  `computer is the winner`
+            }
+            }
+
+            match(user,computer)
+            
+        })
+
+
+      
+
+       
+        
+    </script>
+</body>
+</html>

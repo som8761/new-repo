@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .container{
+    padding: 20px;
+  }
+  li{
+    padding: 6px;
+  }
+  
+
+  h1{
+   text-align: center;
+  }
+
+  .cart{
+    border: 1px solid #666;
+    margin-top: 4px;
+    height: 250px;
+    display: none;
+    opacity: 0; /* Set initial opacity to 0 */
+    transition: all 0.9s linear;
+  }
+  .active.cart{
+    display: block;
+    opacity: 1
+  }
+
+  .cart-items{
+    border: 1px dotted #666;
+    width: 50%;
+    height: 150px;
+    overflow: scroll;
+    margin: 0 auto;
+    background-color: #d7c6d2;
+    z-index: 999;
+  }
+
+</style>
+<body>
+  <div class="container">
+    <li id="item1">item-1<button class="add-to-cart">add-to-cart</button></li>
+    <li id="item2">item-2<button class="add-to-cart">add-to-cart</button></li>
+    <li id="item3">item-3<button class="add-to-cart">add-to-cart</button></li>
+  </div>
+
+  <hr>
+  <h1>shopping list</h1>
+
+  <button id="togglecart">togglecart</button>
+  <div class="cart">
+    <h3>cart items</h3>
+
+    <div class="cart-items">
+      <!-- cart items will autometically added -->
+     
+    </div>
+  </div>
+
+
+
+  <script>
+    // toggle cart r cart take target koarlam cart take access koranor jonno
+    let togglecart = document.getElementById('togglecart')
+    let cart = document.querySelector('.cart')
+
+    // adding the event listeners in togglecart
+    togglecart.addEventListener('click',()=>{
+      cart.classList.toggle('active')
+    })
+
+
+
+    // now targeting the add-to-carts to access those buttons
+    let add_to_carts = document.querySelectorAll('.add-to-cart')
+    let cart_items = document.querySelector('.cart-items')
+
+    add_to_carts.forEach((argument)=>{
+
+      argument.addEventListener('click',(som)=>{
+        let createEle = document.createElement('div')
+        createEle.className = 'cart-item'
+        let text = som.target.parentElement.firstChild.textContent
+        createEle.textContent = text;
+        cart_items.appendChild(createEle)
+      })
+    })
+
+    /*important note
+    som ekhane represent korche click event listener ke...
+    som.target represents the element that triggered the event, in this case, the clicked button.
+
+    mane basically som represent korche click event take.
+
+
+
+    ** from chat gpt :
+    som refers to the event object passed to the click event listener.
+    som.target represents the element that triggered the event, in this case, the clicked button.
+    parentElement refers to the immediate parent element of the clicked button.
+    firstChild retrieves the first child element of the parent, assuming that the desired text content is expected to be the text within the first child element.
+    textContent retrieves the text content of the selected first child element.
+    */
+
+
+  </script>
+</body>
+</html>

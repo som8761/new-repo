@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S W & G GAME</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <script>
+        const user = prompt('Enter S,W or G')
+        const cpuIndex = Math.floor(Math.random() * 3)
+        const cpu = ['S','W','G'][cpuIndex]
+        // ekhane chaile ami s,w,g ke onno akta variable a store kore sei variable take ekhane call kore index bar korte partam,r okhane 3 er jaygay sei variabler er name er sathe length jure orte partam same hoto kahli akhane alda kore seta korini.
+
+         
+        function match(cpu,user){
+            // ami akhane j kono parameter diye krte partam but cpu r user diye korlam for my convenient and i also used the same name while calling the function. 
+            if(user === cpu){
+                return "Nonody wins,The match is tied"
+            }
+            else if(user === 'S' && cpu === 'W'){
+                return 'user wins'
+            }
+            else if(user === 'W' && cpu === 'S'){
+                return 'cpu'
+            }
+            else if(user === 'S' && cpu === 'G'){
+                return 'cpu'
+            }
+            else if(user === 'G' && cpu === 'S'){
+                return 'user'
+            }
+            else if(user === 'W' && cpu === 'G'){
+                return 'user'
+            }
+            else if(user === 'G' && cpu === 'W'){
+                return 'cpu'
+            }
+            
+        }
+        const result = match(cpu,user);
+       document.write((`cpu: ${cpu} & user: ${user} The winner is: ${result}`));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taker</title>
+</head>
+<style>
+    body{
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    main{
+        border: solid 1px #6666;
+        width: 40em;
+        margin:  2em auto;
+        padding: 2em;
+    }
+    h1{
+        text-align: center;
+        line-height: 0%;
+    }
+    #h3{
+        text-align: center;
+        color: rgba(7, 141, 23, 0.93);
+    }
+    label{
+        font-size: 22px;
+    }
+    input{
+        width: 80%;
+        height: 1.8em;
+        padding: 0.5em;
+        border:  solid 1px rgba(7, 141, 23, 0.93);;
+    }
+    #noteButton{
+        margin-top: 2em;
+        padding: 4px 7px;
+        border-radius: 3px;
+        margin-bottom: 2em;
+    }
+    button{
+        background-color: rgba(7, 141, 23, 0.93);
+        color: white;
+    }
+    #noteList{
+        min-width: 2em;
+        /* border: solid 1px red; */
+    }
+    h3{
+        color: rgba(7, 141, 23, 0.93);
+    }
+
+    .border{
+    /* border: solid red 1px; */
+    padding: 1em;
+    position: absolute;
+    top: 7em;
+    width: 23em;
+    height: 10em;
+    font-size: 19px;
+    padding: 4em;
+    color: black;
+    background-color: white;
+    font-weight: 600;
+    border: solid 1px #6666;
+    text-align: center;
+    min-height: 15em;
+    overflow: scroll;
+    }
+
+    .close-button{
+        width: 2em;
+        height: 2em; /* Set the height to match the width for a square button */
+        cursor: pointer;
+        color: red;
+        border: solid 1px black;
+        position: absolute;
+        top: 0.5em; /* Adjust the top position to vertically center the button */
+        right: 14.5em; /* Position the button on the top-right corner */
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    .close-button:hover{
+        background-color: red;
+        color: white;
+        border-color: transparent;
+    }
+    .note-border{
+        border: solid 1px #666;
+        margin-bottom: 4px;
+        text-align: center;
+        padding: 1em;
+    }
+        
+</style>
+<body>
+    <main>
+        <h1>Note Taker</h1>
+        <h3 id="h3">Add A New Note:</h3>
+
+        <label for="Note">Note:</label>
+        <input type="text" id="noteField" placeholder="Write your Note Here">
+
+        <button id="noteButton">Add Note</button>
+
+        <div id="noteList">
+            <!-- notes will be updated here automatically. -->
+        </div>
+    </main>
+
+
+    <script>
+        const noteButton = document.getElementById('noteButton')
+        const noteList = document.getElementById('noteList')
+
+        noteButton.addEventListener('click',noteTakerFunc)
+
+
+        let note = 1;
+        // to incremeant the note each and every time while the Add note button is clicked.
+
+        function noteTakerFunc(event){
+            event.preventDefault()
+
+            const noteField = document.getElementById('noteField').value;
+
+           
+            if(noteField){
+                const noteItems = document.createElement('div')
+                noteItems.classList.add('note-border')
+                // add a new class for each and evry single note.
+                noteItems.innerHTML = `
+                    <h3>Note${note++}</h3>
+                    <p>${noteField}</p>
+                `
+
+                // adding a button inside the note items.
+                const viewNoteBtn = document.createElement('button')
+                viewNoteBtn.textContent = 'view note'
+
+                // appending elements.
+                noteList.appendChild(noteItems)
+                noteItems.appendChild(viewNoteBtn)
+
+                // view note button.
+                viewNoteBtn.addEventListener('click',()=>{
+                   const createDiv = document.createElement('div')
+                   createDiv.classList.add('border')
+                    // add a class for each and every view note to display out side the box.
+                   createDiv.innerHTML = noteField;
+                   noteList.appendChild(createDiv)
+
+                    
+
+                    // create the span tag for create a close button .
+                   const closeButton = document.createElement('span') // Create a new span for the close button
+                   closeButton.innerHTML = '&#10006;'
+                   closeButton.classList.add('close-button')
+
+                   createDiv.appendChild(closeButton)
+                   // Append the close button to the created div.
+                   
+                   closeButton.addEventListener('click',()=>{
+                        noteList.removeChild(createDiv)
+                        // note list er vator theke create div ke remove kore dilam.
+                   })
+                })
+
+
+                document.getElementById('noteField').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
