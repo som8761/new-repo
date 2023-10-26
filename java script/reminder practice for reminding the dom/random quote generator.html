@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    #quoteBox{
+        border: solid 1px #666;
+        height: 300px;
+        width: 600px;
+        padding: 0.5em;
+        margin: 0 auto;
+        font-size: 22px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        text-align: center;
+    }
+    #submit{
+        margin: 2em auto;
+        width: 122px;
+        padding: 12px 4px;
+        font-size: 22px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+    }
+    li{
+        list-style: none;
+    }
+</style>
+<body>
+    <div id="container">
+        <h1>Random Quote Generator</h1>
+        <div id="quoteBox"></div>
+        <button id="submit">submit</button>
+    </div>
+    <script>
+        const quotesArray = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them.",
+        "Parallel lines have so much in common. It's a shame they'll never meet.",
+        "Why don't some couples go to the gym? Because some relationships don't work out.",
+        "Why don’t skeletons fight each other? They don’t have the guts.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "What do you call fake spaghetti? An impasta!",
+        "Why did the bicycle fall over? Because it was two-tired!",
+        "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+        "Why did the tomato turn red? Because it saw the salad dressing!",
+      ];
+
+
+      const submit = document.getElementById('submit');
+      const quoteBox = document.getElementById('quoteBox');
+
+      function randomQuoteGenerator(quote){
+        const randomIndex = Math.floor(Math.random() * quote.length);
+        const randomQuote = quote[randomIndex]
+        const element = document.createElement('li');
+        element.innerHTML = randomQuote;
+        quoteBox.innerHTML = '';
+        quoteBox.appendChild(element);
+      }
+
+      submit.addEventListener('click',()=>{
+        randomQuoteGenerator(quotesArray)
+      })
+    </script>
+</body>
+</html>

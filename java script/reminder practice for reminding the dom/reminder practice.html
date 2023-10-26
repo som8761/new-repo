@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reminder practice </title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <h2>Guess The Number from 1 to 100.</h2>
+    <input type="text" name="number" id="userGuess" placeholder="enter the number">
+    <button id="submit">submit</button>
+    <div id="text"></div>
+    <div id="attempts"></div>
+    <script>
+
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        const submit = document.getElementById('submit');
+        const text = document.getElementById('text');
+        // const attempts = document.getElementById('attempts');
+
+        let attempts = 0;
+
+        submit.addEventListener('click',()=>{
+            const userGuess = parseInt(document.getElementById('userGuess').value);
+            document.getElementById('userGuess').value = '';
+            attempts++;
+            if(userGuess === randomNumber){
+                text.textContent = `congratulations you have guessed the right number${userGuess}.`
+                document.getElementById('attempts').textContent = `and you have taken ${attempts} attempts.`
+            }
+            else if(userGuess > randomNumber){
+                text.textContent = `You have guessed the higher number.try again!`
+            }
+            else{
+                text.textContent = `You have guessed the lower number.try again!`
+            }
+
+        })
+    </script>
+</body>
+</html>
