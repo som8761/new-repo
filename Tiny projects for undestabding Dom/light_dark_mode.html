@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 40px;
+    }
+    #para{
+        text-align: center;
+
+    }
+
+
+    .active{
+        background-color: #000000;
+
+    }
+    .active2{
+        color: darkorchid;
+        text-transform: uppercase;
+    }
+
+    .box{
+        border: #6666 1px solid;
+        height: 300px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s linear;
+    }
+  
+
+</style>
+<body>
+    <div class="container">
+        <button id="darkmode">dark mode</button>
+        <button id="lightmode">light mode</button>
+    </div>
+    
+    
+    <button id="DARK/LIGHT">DARK/LIGHT</button>
+
+    <p id="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt qui eum ea. Hic, odit sunt nihil a alias vel!</p>
+
+    <div class="box">
+        <h3 id="som">som</h3>
+    </div>
+   
+
+
+    <script>
+        // target korlam
+        let dark_mode = document.getElementById('darkmode')
+        let light_mode = document.getElementById('lightmode')
+        let paragraph = document.getElementById('para')
+
+
+        // ekhane ami event listner k add korlam r jar modhe eventlistener k addkorlam setate jadi click kori tahole ki ki hobe kar kar css ba elemnt kichu change hbe seta korlam..mane akta jinis a click korle kon kon elements er modhe changes asbe seta amra korte pari.
+
+
+        /*ekhane amra duto button niye korechilam:*/ 
+
+        // dark_mode.addEventListener('click',()=>{
+        //     document.body.style.backgroundColor = 'black'
+        //     paragraph.style.color = 'white'
+        // })
+        // light_mode.addEventListener('click',()=>{
+        //     document.body.style.backgroundColor = 'white'
+        //     paragraph.style.color = 'black'
+        // })
+
+
+        // ata amra check box er madhomeo korte pari
+
+
+
+
+        /*eta akta button diyei duto kaj krlam r active class diye korlam ..r uporer gulo te duto button use krechilm without any or active class toggle korechilm. */
+
+        let dark_light = document.getElementById('DARK/LIGHT') 
+        let para = document.getElementById('para')
+        let box = document.querySelector('.box')
+        let som = document.getElementById('som')
+
+        // // 1st method
+
+        // dark_light.addEventListener('click',()=>{
+        //     document.body.classList.toggle('active')
+        //     para.classList.toggle('active2')
+        // })
+
+
+        // // 2nd method
+
+        // let is_light = true;
+
+        // dark_light.addEventListener('click',()=>{
+
+        // if(is_light){
+        //     document.body.classList.toggle('active')
+        //     para.classList.toggle('active2')
+        // }
+        // // adi upore toggle na diye duto te add diatam ta hole remove tao kprte hoto tar jonno ekhane else lagate hoto r else a remove  lagate hoto tobe giye toggle hoto..ta na hole add e  hoto khali..jahatu toggle lagiyechi tai setar r dorkar nai. 
+        // })
+        // ekhane if er modhe jeta ache seta jadi true hoy tahole or nicher statement ta chole jabe..r jadi true na hoy tahole else er statment ta chole jabe.ata kichuta chat gpt thke newa r kichu ta amar banano.
+
+
+        // DARK/LIGHT  button a click kore body r background r paragraph er color change korlam.
+
+
+
+
+        dark_light.addEventListener('click',()=>{
+            para.classList.toggle('active2')
+            box.classList.toggle('active')
+            som.classList.toggle('active2')
+        })
+
+
+       
+    </script>
+    
+</body>
+</html>
