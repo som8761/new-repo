@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple image toggle</title>
+</head>
+<style>
+    .imageContainer{
+    display: inline-block;   
+    cursor: pointer;
+    }
+    img{
+        height: 400px;
+        width: 400px;
+    }
+</style>
+
+<body>
+    <!-- image conatainers -->
+
+
+    <div class="imageContainer">
+        <img id="image1" src="../image/hiavusa - Copy.jpg" alt="image1" >
+    </div>
+
+    <div class="imageContainer">
+        <img id="image2" src="../image/ninja.jpg" alt="image2" >
+    </div>
+
+
+    <div class="imageContainer">
+        <img id="image3" src="../image/8a8099c1b53399dc2f22bc0ce3f940e4.jpg" alt="image2" >
+    </div>
+    <div class="imageContainer">
+        <img id="image4" src="../image/backround.jpg.jpg" alt="image2" >
+    </div>
+    
+    <input type="password" id="passwordInput">
+  <input type="checkbox" id="toggleCheckbox">
+  <!-- <label for="toggleCheckbox">Show Password</label> -->
+
+
+    <!-- js -->
+    <script>
+        // get target to these images
+        let image1 = document.getElementById('image1')
+        let image2 = document.getElementById('image2')
+        
+        let image3 = document.getElementById('image3')
+        let image4 = document.getElementById('image4')
+
+
+        // get add the event listeners 
+
+        image1.addEventListener('click',()=>{
+            image1.style.display = 'none'
+            image2.style.display = 'block'
+            image3.style.display = 'none'
+            image4.style.display = 'none'
+        })
+
+
+        image2.addEventListener('click',()=>{
+            image2.style.display = 'none'
+            image1.style.display = 'none'
+            image3.style.display = 'block'
+            image4.style.display = 'none'
+        })
+
+        image3.addEventListener('click',()=>{
+            image3.style.display = 'none'
+            image4.style.display = 'block'
+            image2.style.display = 'none'
+            image1.style.display = 'none'
+        })
+        image4.addEventListener('click',()=>{
+            image4.style.display = 'none'
+            image3.style.display = 'none'
+            image2.style.display = 'none'
+            image1.style.display = 'block'
+        })
+
+
+        /*summery 
+        ekhane amra sikhlam jadi akta photo te jadi click kori tahole sei photo ta invisible hoye giye r akta photo ki kore visible hoye jai..but ami dakhechilm duto photo diye tai ami ata ke ak level upore niye galam 4 te photo te click korle porer ta ki kore dekhai seta nijer thke korlam.
+        */
+
+        // ekhane amader bujgte hbe j joto gulo iamge a ami click korchi toto gulo te amake event listener lagate hoche(karon ami chai click korle akta r por akta image palte jak)..r each and every image a event listener lagate hole each and every image ke age target korte hbe, tobe na amra event listener diye kichu function ogulo modhe run krate parbo.
+
+
+
+        /*some projects
+        
+
+        1)Simple Image Toggle: Create a webpage with two images. When one image is clicked, it should toggle with the other image.
+
+        2)Password Toggle: Build a password input field that shows/hides the entered password when a toggle button is clicked.
+
+        3)FAQ Toggle: Design an FAQ (Frequently Asked Questions) section with a list of questions. When a question is clicked, its corresponding answer should toggle open/close.
+
+        4)Light/Dark Mode Toggle: Create a webpage with a toggle switch that changes the theme between light and dark mode when clicked. The page's colors, fonts, and other elements should reflect the selected mode.
+
+        5)Tabbed Content Toggle: Construct a webpage with multiple tabs. When a tab is clicked, it should toggle the content displayed, showing the corresponding information while hiding the others.
+
+        6)Accordion Toggle: Implement an accordion-style component where multiple sections can be expanded or collapsed. When a section header is clicked, it should toggle the visibility of the associated content.
+
+        7)Shopping Cart Toggle: Develop a simple shopping cart interface where users can add/remove items. Include a toggle button that hides/shows the cart's content when clicked.
+
+        Show More/Less Toggle: Create a "Show More" link that expands a block of text to display the full content, and a "Show Less" link that toggles it back to the original truncated state.
+        */
+        var passwordI= document.getElementById("passwordInput");
+        var toggleC = document.getElementById("toggleCheckbox");
+
+        toggleC.addEventListener("click", function() {
+        if (toggleCheckbox.checked) {
+            passwordI.type = "text";
+        } else {
+            passwordI.type = "password";
+        }
+        });
+
+    </script>
+</body>
+</html>

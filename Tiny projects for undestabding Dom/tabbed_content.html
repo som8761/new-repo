@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .tab {
+      display: none;
+    }
+
+    .tab.active {
+      display: block;
+    }
+  </style>
+  <body>
+    <!-- Tabbed Content Toggle: Construct a webpage with multiple tabs. When a tab is clicked, it should toggle the content displayed, showing the corresponding information while hiding the others. -->
+
+    <div class="tabs">
+      <button class="tab-button" data-tab="tab1">Tab 1</button>
+      <button class="tab-button" data-tab="tab2">Tab 2</button>
+      <button class="tab-button" data-tab="tab3">Tab 3</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- tab1 -->
+      <div id="tab1" class="tab">
+        <h2>Tab 1 Content</h2>
+        <p>This is the content for Tab 1.</p>
+      </div>
+      <!-- tab2 -->
+      <div id="tab2" class="tab">
+        <h2>Tab 2 Content</h2>
+        <p>This is the content for Tab 2.</p>
+      </div>
+      <!-- tab3 -->
+      <div id="tab3" class="tab">
+        <h2>Tab 3 Content</h2>
+        <p>This is the content for Tab 3.</p>
+      </div>
+    </div>
+
+    <script>
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const tabs = document.querySelectorAll(".tab");
+
+      function showTabContent(tabId) {
+        tabs.forEach((tab) => {
+          if (tab.id === tabId) {
+            tab.classList.add("active");
+          } else {
+            tab.classList.remove("active");
+          }
+        });
+      }
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabId = button.dataset.tab;
+          showTabContent(tabId);
+        });
+      });
+    </script>
+  </body>
+</html>

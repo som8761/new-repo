@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showMore/less</title>
+</head>
+<style>
+    .container{
+        padding: 10%;
+        
+    }
+    p{
+        max-height: 50px;
+        overflow: hidden;
+        margin-bottom: 0px;
+        transition: all 0.7s linear;
+        /* still not working the transition */
+    }
+    p.active{
+        max-height: fit-content;
+        /* max-height: none; */
+        
+    }
+    #sp{
+        cursor: pointer; 
+        margin-top: 5px;
+        color: rgb(57, 57, 236);
+        font-size: 1.08rem;
+        
+    }
+   
+</style>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod repellendus eum numquam ea earum accusantium nostrum nam neque, id dicta sit assumenda eaque alias illum. Odio quibusdam assumenda nisi, illum aperiam, architecto ipsam harum eaque esse vel accusamus totam suscipit doloribus! Voluptatem nulla tempore quos vitae cupiditate? Est alias et nostrum deleniti porro eveniet praesentium provident. Harum optio aliquid, quia ipsum iste id blanditiis asperiores obcaecati neque esse tempore nulla animi repudiandae beatae deleniti pariatur vel, incidunt fugiat? Odio ipsa, assumenda nemo iste ipsam in repellat sed nesciunt! Aspernatur adipisci asperiores amet debitis delectus itaque odio ipsum eveniet eius? Totam repellat, non repudiandae officiis cumque aperiam sint perferendis explicabo necessitatibus sequi dolores, autem alias. Possimus repudiandae consequatur illo? Consequuntur delectus expedita odit ducimus deleniti numquam totam blanditiis quod, aspernatur dolor culpa adipisci quidem mollitia et inventore a dolores unde tempora voluptatem. Asperiores eius, temporibus corrupti amet iusto ducimus fuga aut sequi? Maxime repellendus eveniet voluptatem consequatur, quos praesentium doloribus odit numquam. Ullam adipisci alias atque fugiat possimus quidem consectetur! Enim quidem ut blanditiis neque modi dignissimos officiis vel impedit illum odit earum, ad, numquam, autem qui ea est totam quis inventore tempore eos? In odit, sit aut obcaecati nostrum expedita quae eius eum atque iusto sed aspernatur error voluptatibus temporibus nisi deserunt quam iste aliquid veritatis recusandae. Porro, numquam esse, aliquid harum eveniet cumque at incidunt amet dicta, ex eaque magnam mollitia animi! Deleniti accusantium tempore at cum? Similique veritatis, veniam expedita aliquid aperiam quas praesentium mollitia pariatur quo itaque quae, soluta natus cum neque necessitatibus nesciunt eveniet dolore commodi facere corrupti odio id ullam quasi. Consequuntur nihil illo recusandae ea. Nobis eum nihil velit repudiandae hic dicta labore laboriosam pariatur molestias veritatis magni vel aliquid laborum facere consectetur modi dolorem odit adipisci delectus deserunt ipsam odio impedit, iusto perspiciatis? Odit natus dolorum aspernatur voluptas! Veniam debitis laudantium nemo minima odio magnam ab asperiores enim, inventore vel beatae veritatis eligendi molestiae. Voluptatum optio eaque fugiat quibusdam unde perspiciatis quis animi dignissimos totam quidem labore officia, accusamus officiis sed laboriosam ratione minima cupiditate omnis quos? Alias enim delectus quidem ad hic! Incidunt in, voluptates consequatur dolor vero nulla fuga debitis perferendis illo error unde rem asperiores magnam eveniet ducimus harum alias eos voluptatibus, et repellat possimus explicabo at excepturi. Itaque doloremque molestias repudiandae alias totam blanditiis quasi assumenda quo ipsa nobis sunt, iusto ex! Optio quae aliquid quasi laudantium beatae voluptatibus. Nobis, saepe iste tempore qui sit sint labore amet dolor id eveniet doloremque! Libero mollitia, vel natus deserunt officiis cum neque ad tempore, perspiciatis ullam ea, nobis commodi. Qui nostrum quaerat vitae fugiat praesentium tempore soluta beatae tenetur sequi quis recusandae accusantium, ratione quia quo officiis quam eligendi corporis iste tempora quisquam aperiam nemo. Dicta quam qui deserunt, nobis expedita amet modi porro unde nemo minus labore consectetur dolor, quis neque, beatae error incidunt exercitationem! Libero nulla culpa non sint quibusdam in nostrum porro est voluptatum eaque vero, facere voluptas aliquid? Fuga voluptatibus recusandae maiores incidunt placeat assumenda soluta dolor.kijdkjqoa<h5 id="sp">show more....</h5>
+        </p>
+    </div>
+</body>
+<script>
+    let show_more_less = document.getElementById('sp')
+    let paragraph = document.getElementsByTagName('p')[0]
+
+    show_more_less.addEventListener('click',()=>{
+        paragraph.classList.toggle('active')
+        // atuku korle hoto bt alda alda lekha ta patam na (show more/less)
+
+        if(paragraph.classList.contains('active')){
+            show_more_less.textContent = 'show less'
+        }else{
+            show_more_less.textContent = 'show more...'
+        }
+        // jadi aram kore na kori tahole text content paltate parbo na. css diye tai ai method tai best..its proven.
+    })
+        // amra paragraph a toggle korlam active class ke ato ta bujhlm..abar if a akta condition dilam ..seta hlo j jadi paragraph a j active class ta lagiyechi seta contains kore mane thake(mane jakhn click kori takhn e to active class ta create hoche nahle to hbena) tahole show more ke show less kore dao nahole show more e thkbe..
+</script>
+</html>
