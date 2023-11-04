@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+
+    for(let c = 1;c <= 10;c++){
+        if(c==5){
+            break
+        }
+        document.write(c)
+        document.write('<br>')
+    }
+
+    /*ai loop a j c er value ache seta 4 obdi print hoche ..karon jakhn c == 5 hoche mane oi condition ta true hoche seta r oi for loop er porer kono kichu print korbe na mane r 4 er porer value print korbena karon if er condition ta truie hoye jache..break er pore r kono value print hoy na oi loop tar vetore ,,for loop ta sesh kore mane 21 no line diye abar print hobe..*/
+
+    document.write('<br>')
+
+    
+
+    for(let c = 1;c <= 10;c++){
+        if(c==5){
+            continue
+        }
+        if(c==9)
+            break
+        document.write(c)
+        document.write('<br>')
+    }
+    
+    /*continue aktu alada ..akhane sudhu 5 number take break korche karon 5 number value ta if condition a true hjoche ..tai 5 number ta print hpche na tarpor thke print hoche..break jekhane r print e korchilo na but continue korche khali 5 ta bade..
+    r akhane ami abar c==9 diye break dilam tai r 8 er por thke kichu print hbena..*/
+
+
+
+    /*continue r break er modhe akta similarity ache jeta holo dutotei niche value ta print hoyna..
+    
+    but dissimilarity holo j break puro loop ta khotom kore baire bariye ashe block theke but continue oi particular element take chere age bare jay abar incriment kore porer value ta print kore..*/
+
+
+
+    /*nested loop*/
+
+    
+    for(let b = 1;b <= 10;b++){
+        // if(b==2){
+        //     break
+        // }
+        // ekkhanei break er por r kichu cholbena
+        document.write(b)
+        document.write('<br>')
+        
+        // akta value exicute hoche niche jache r nicher puro loop take sesh kore abr upore asche ai bhbe cholte
+
+        for (a = 1;a < 3;a++){
+            if(b==2){
+            break 
+            }
+            document.write('somnath')
+            document.write('<br>')
+            
+        }
+        // jatakhn na ai loop ta sesh hobe tatakhn uporer loop a jabena..jai ai loop ta sesh hobe takhon e uporer loop a chole jabe r b er value incriment hoye jabe then abar porer value asbe (ex-2)trpor niche 2 bar somnath likhbe  r loop ta khotom hhobe then abar uporer value te giye incriment hbe r abar niche asbe..ai bhbe cholte thkbe..
+    }
+
+    
+    /*lebel diye kaj bole atake:
+
+
+    outer: amra jadi main loop take outer name diy r secndary loop tate outer name ta call kore kono kaj kori tahle j kajta main loop a korle hoto seta secodry loop ai korle hoye jache..mane basically main loop er kaj secondary loop diyei hoye jaceh..*/
+
+
+    let i = 1;
+
+    while(i<=10){
+        
+        console.log(i)
+        if(i==5){
+            break
+        }
+        i++;
+        
+        k = 1;
+        while(k<=2){
+            console.log('som')
+            k++
+        }
+    }
+
+    // jahatu amra upore break lagiyechi tai 5 er value ta upore true hoye jabe but niche if a ashe o true hoye jabe r break lage jabe tai 5 r print hbena..bt jadi niche thakto break ta to age 5 print korato trpor giye break lagato ..
+
+    console.log('  ')
+
+    document.write('<br>')
+
+
+
+    let n = 16;
+    do{
+        document.write(n)
+        n++;
+        document.write('<br>')
+
+
+        let b = 1
+        do{
+            document.write('to')
+            b++
+            document.write('<br>')
+
+        }while(b<=5)
+
+    }while(n<=10)
+
+
+    /*to akhne age print kore dilo akbar then akbar incriment korlo then niche galo check korte dakhlo j true ache condition ta tai abar upore print holo..jadi akbar print howar por r incriment howar por condition ta false hoto tahole */
+</script>
+</html>

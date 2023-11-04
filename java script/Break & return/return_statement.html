@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*its normal method*/
+    function som(a,b){
+        console.log(a+b)
+    }
+    som(9,6)
+
+    // function er vetore console.log kora tahkle baire r doarkar pore na,karon vetorei ota print hoye jai..but jakhn amra function er vetore return kori takhn amader baire console.log kortei hobe kaorn return kichu jinis ke rerun kore but prunt kore na ,,tai amader print korar jonno baire console ba document korteio hoy..
+
+
+    console.log('')
+
+
+
+
+    /*with return method*/
+
+    function add(x,y){
+        let sum = (x+y)
+        return sum
+        // akhane jadi amra return na kortam tahole console korte hoto r niche console korte hto na khali call korte hoto niche jadi console kortam tahole undefined asto..
+    }
+    let a = 12
+    let b = 17
+
+    // let v = 9 
+    // let n = 5
+
+    console.log (add(a,b))
+    console.log(add(9,5))
+    // important:
+    // rerurn is do not print aything its just a method to retun something..so if we need to return something so we have to print that one..otherwise the programe is ture but it cant be print so its need to use console or anything to print something while use return statement.
+
+
+    console.log('')
+
+    function somnath(k,m){
+        return k+m
+    }
+    let k = 6
+    let m = 0
+    // somnath(k,m) 
+    document.write(somnath(k,m))
+    
+    // its a true programe but it cannot print the result because return do not print anything ..its just a statement or method..
+
+    // return er pashe jadi kichu digit ba kichu amra nihjer mon thke pass kore diy kono lekha variable chara tahle jai hoye jak na kano return oi or pasher value tai passs kore dabe vul val.
+
+    console.log('')
+
+
+
+
+    let s = 8
+    let t = 6
+
+    function name(s,t){
+        
+
+        if(s > t){
+            return 'true'
+            
+        }
+        else if(s < t){
+            return 'false'
+        }
+        else if (s = t){
+            return 'equal'
+        }
+    }
+   
+    console.log(name(s,t))
+
+
+    /*loop*/
+
+    // let w = 81;
+    // let l = prompt('guess! what is the number')
+    // chance = 0
+
+    // do{
+    //     if(w == l){
+    //     console.log('congratulations! you have guessed the same number')}
+
+    //     else if(l > w){
+    //         console.log('you have guessed the greater number')
+    //     }
+    //     else if(l < w){
+    //         console.log('you have guessed the less number')
+    //     }
+    //     chance++
+    // }while(w!==l)
+    
+
+
+        let f =  (Math.random() *100 )+1;
+
+        f = Number.parseInt(f)
+
+        let inp;
+        let score = 100;
+        
+        while(inp != f){
+            
+            score = score - 1
+            
+            let inp = prompt('Enter the number')
+
+            if(inp == f){
+                console.log('congratulations you have guessed the right number')
+                console.log(`you guess actual the number in  ${100 - score}chances.`)
+            }
+            else if(inp < f && inp >= 100){
+                console.log('your number is smaller than  actual number')
+            }
+            else if(inp > f && inp <= 100){
+                console.log('your number is greater than  actual number')
+            }
+            else{
+                console.log('enter the number between 1 to 100')
+            }
+            score++;
+        }
+        
+
+
+    
+    
+</script>
+</html>
