@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+  </head>
+  <style>
+    .error {
+      color: red;
+      font-size: 18px;
+    }
+  </style>
+  <body>
+    <form id="myForm">
+      <label for="Name">Name:</label>
+      <input type="text" id="nameInputField" />
+      <p class="error" id="nameText"></p>
+
+      <label for="Email">Email:</label>
+      <input type="email" id="emailInputField" />
+      <p class="error" id="emailText"></p>
+
+      <label for="phone">Phone:</label>
+      <input type="number" id="phoneInputField" />
+      <p class="error" id="phoneText"></p>
+
+      <label for="password">Password:</label>
+      <input type="password" id="passwordInputField" />
+      <p class="error" id="passwordText"></p>
+
+      <label for="Password">Confrim Password:</label>
+      <input type="password" id="ConfrimPasswordInputField" />
+      <p class="error" id="confirmPasswordText"></p>
+
+      <button id="submit">submit</button>
+      <button id="reset">reset</button>
+    </form>
+
+    <script>
+      // refferences all the input tags.
+      const nameInputField = document.getElementById("nameInputField");
+      const emailInputField = document.getElementById("emailInputField");
+      const phoneInputField = document.getElementById("phoneInputField");
+      const passwordInputField = document.getElementById("passwordInputField");
+      const ConfrimPasswordInputField = document.getElementById(
+        "ConfrimPasswordInputField"
+      );
+
+      // refferences all the texts below the inout tags.
+      const nameText = document.getElementById("nameText");
+      const emailText = document.getElementById("emailText");
+      const phoneText = document.getElementById("phoneText");
+      const passwordText = document.getElementById("passwordText");
+      const confirmPasswordText = document.getElementById(
+        "confirmPasswordText"
+      );
+
+      // reffernce the button tags.
+      const submitButton = document.getElementById("submit");
+      const resetButton = document.getElementById("reset");
+
+      // adding the eventlistener in submit button.
+      submitButton.addEventListener("click", (e) => {
+        validDataForm(e);
+      });
+
+      // for reseting the whole data with one click.
+      resetButton.addEventListener("click", () => {
+        resetTheForm();
+      }); // jadi local storage use kori tahole rest button ta r kaj korbena..
+
+      // validation functions.
+      function validDataForm(e) {
+        e.preventDefault();
+        validateName();
+        validateEmail();
+        validatePhone();
+        validatePassword();
+        validateConfirmPassword();
+      }
+
+      function validateName() {
+        if (nameInputField.value === "") {
+          nameText.textContent = "Name Field is required*";
+          saveTheTask();
+        } else {
+          nameText.textContent = "";
+        }
+      }
+
+      function validateEmail() {
+        if (emailInputField.value === "") {
+          emailText.textContent = "Email is required*";
+          saveTheTask();
+        } else if (!validEmail(emailInputField.value)) {
+          emailText.textContent = "Enter the valid email!";
+          saveTheTask();
+        } else {
+          emailText.textContent = "";
+        }
+      }
+
+      function validatePhone() {
+        if (phoneInputField.value === "") {
+          phoneText.textContent = "phone number is required*";
+          saveTheTask();
+        } else if (phoneInputField.value.length < 10) {
+          phoneText.textContent = "Enter the valid phone number!";
+          saveTheTask();
+        } else {
+          phoneText.textContent = "";
+        }
+      }
+
+      function validatePassword() {
+        if (passwordInputField.value === "") {
+          passwordText.textContent = "password is required*";
+          saveTheTask();
+        } else if (
+          passwordInputField.value.length >= 8 &&
+          isValidPassword(passwordInputField.value)
+        ) {
+          passwordText.textContent = "";
+          saveTheTask();
+        } else {
+          passwordText.textContent =
+            "password must be 8 characters and atleast 1 digit.";
+        }
+      }
+
+      function validateConfirmPassword() {
+        if (ConfrimPasswordInputField.value === "") {
+          confirmPasswordText.textContent = "confirm password is required*";
+          saveTheTask();
+        } else if (
+          passwordInputField.value === ConfrimPasswordInputField.value
+        ) {
+          confirmPasswordText.value = "";
+          saveTheTask();
+        } else {
+          confirmPasswordText.textContent =
+            "please enter the same password that you mentioned above";
+        }
+      }
+
+      // email validation function.
+      function validEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email); // email er modhe emailRejex er jinis gulo ache ki na dekha hoche ekhane.
+      }
+
+      // password validation function.
+      function isValidPassword(password) {
+        const passRejex = /^(?=.*[0-9])(?=.*[@#$^&*()+!]).{8,}$/;
+        return passRejex.test(password);
+      }
+
+      // adding the data in localstorage.
+      function saveTheTask() {
+        localStorage.setItem("name", nameInputField.value);
+        localStorage.setItem("email", emailInputField.value);
+        localStorage.setItem("phone", phoneInputField.value);
+        localStorage.setItem("password", passwordInputField.value);
+        localStorage.setItem(
+          "confirmPassword",
+          ConfrimPasswordInputField.value
+        );
+      }
+      // showing the data on the display.
+      function showTask() {
+        nameInputField.value = localStorage.getItem("name");
+        emailInputField.value = localStorage.getItem("email");
+        phoneInputField.value = localStorage.getItem("phone");
+        passwordInputField.value = localStorage.getItem("password");
+        ConfrimPasswordInputField.value =
+          localStorage.getItem("confirmPassword");
+      }
+      showTask();
+
+
+      // reset the form even if the data has already been stored in the local storage.
+      function resetTheForm() {
+        // Clear the input field values
+        nameInputField.value = "";
+        emailInputField.value = "";
+        phoneInputField.value = "";
+        passwordInputField.value = "";
+        ConfrimPasswordInputField.value = "";
+
+        // Clear the error messages
+        nameText.textContent = "";
+        emailText.textContent = "";
+        phoneText.textContent = "";
+        passwordText.textContent = "";
+        confirmPasswordText.textContent = "";
+
+        // Clear local storage data
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        localStorage.removeItem("phone");
+        localStorage.removeItem("password");
+        localStorage.removeItem("confirmPassword");
+      }
+    </script>
+  </body>
+</html>

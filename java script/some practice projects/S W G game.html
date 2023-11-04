@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>s w g game</title>
+</head>
+<style>
+    #swg-game-container{
+        border: solid 2px black;
+        width: 600px;
+        padding: 6px;
+        margin: 0 auto;
+    }
+    h1{
+        text-align: center;
+    }
+    #game-button{
+        display: flex;
+        margin: 5px auto;
+        width: 7em;
+        justify-content: center;
+        align-items: center;
+        padding: 3px;
+    }
+    #swg-field{
+        display: block;
+        margin: 0 auto;
+        padding: 0.5em;
+        width: 20em;
+        text-align: center;   
+    }
+    #text{
+        color: blue;
+        font-size: 19px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="swg-game-container">
+        <h1>Snake Water Gun GAME</h1>
+
+        <input type="text" id="swg-field">
+        <p id="text"></p>
+
+        <p>User Score: <span id="user-score">0</span></p>
+        <p>Computer Score: <span id="computer-score">0</span></p>
+
+        <button id="game-button">Roll It</button>
+    </div>
+    <script>
+        const game_button = document.getElementById('game-button')
+        const text = document.getElementById('text')
+        const user_score = document.getElementById('user-score')
+        const computer_score = document.getElementById('computer-score')
+
+
+        function makeTheIndexOfGame(){
+            const gameContent = ['snake','water','gun']
+            const computer = Math.floor(Math.random() * gameContent.length)
+            const computerIndex = gameContent[computer]; // computer value;
+            const user = document.getElementById('swg-field').value; // user value
+
+            if(user === ''){
+                text.textContent = 'PLease enter snake ,water or gun before rolling.'
+            }
+            else if(!gameContent.includes(user)){
+                text.textContent = 'Invlid input! please enter snake , water or gun.'
+            }
+            document.getElementById('swg-field').value = ''
+            matchTheIndexWithUser(user,computerIndex) // calling the condition function.
+        }
+
+        let gamePlayed = 0;
+        let userScore = 0;
+        let computerScore = 0;
+
+        // comparing the user with computer .
+        function matchTheIndexWithUser(user,computerIndex){
+            gamePlayed++;
+            
+            if(user === computerIndex){
+                text.textContent = `Congratulations you have tied with computer and you have taken "${gamePlayed}" attempts.`
+            }
+            else if(user === 'snake' && computerIndex === 'water'){
+                text.textContent = `computer won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'
+                `
+                computerScore++;
+                computer_score.textContent =  computerScore;
+            }
+            else if(user === 'water' && computerIndex === 'snake'){
+                text.textContent = `user won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'`
+
+                userScore++;
+                user_score.textContent =  userScore;
+            }
+            else if(user === 'water' && computerIndex === 'gun'){
+                text.textContent = `user won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'`
+
+                userScore++;
+                user_score.textContent =  userScore;
+            }
+            else if(user === 'gun' && computerIndex === 'water'){
+                text.textContent = `computer won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'`
+
+                computerScore++;
+                computer_score.textContent = computerScore;
+            }
+            else if(user === 'snake' && computerIndex === 'gun'){
+                text.textContent = `computer won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'`
+
+                computerScore++;
+                computer_score.textContent =  computerScore;
+            }
+            else if(user === 'gun' && computerIndex === 'water'){
+                text.textContent = `user won the match.
+                'user result is ${user}' and 'computer result is ${computerIndex}'`
+
+                userScore++;
+                user_score.textContent = userScore;
+            }
+
+        }
+        
+
+        // adding the event listener
+        game_button.addEventListener('click',()=>{
+            makeTheIndexOfGame()
+        })
+
+    </script>
+</body>
+</html>

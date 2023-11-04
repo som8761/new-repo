@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List App</title>
+  </head>
+  <style>
+    #container {
+      width: 500px;
+      border: solid 1px black;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+    #inputField {
+      padding: 4px 7px;
+    }
+    #toDoList {
+      width: 80%;
+      /* border: solid 1px red; */
+      margin: 0 auto;
+    }
+
+    #todoItems {
+      width: 300px;
+      min-height: 100px;
+      border: solid 1px black;
+      overflow: scroll;
+    }
+
+    .linethrough {
+      text-decoration: line-through;
+    }
+  </style>
+
+  <body>
+    <div id="container">
+      <h1>To Do list App</h1>
+
+      <div id="toDoList">
+        <input type="text" id="inputField" />
+        <button id="todobutton">add items</button>
+        <button id="clearAll">clear All</button>
+
+        <div id="todoItemContainer">
+          <h2>to do items</h2>
+
+          <ul id="todoItems">
+            <!-- items will automatically added here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const inputField = document.getElementById("inputField");
+      const todobutton = document.getElementById("todobutton");
+      const todoItems = document.getElementById("todoItems");
+      const clearAll = document.getElementById("clearAll");
+
+      function addTask(text) {
+        const element = document.createElement("li");
+        element.textContent = text;
+        element.style.listStyle = "number";
+        todoItems.appendChild(element);
+        inputField.value = "";
+
+        // added the Done button.
+        const DoneButton = document.createElement("button");
+        DoneButton.textContent = "Done";
+        element.appendChild(DoneButton);
+
+        //added the Remove button.
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        element.appendChild(removeButton);
+      }
+
+      // added the data in our browser.
+      function saveTaskToTheLocalStorage() {
+        try {
+          localStorage.setItem("data", todoItems.innerHTML);
+        } 
+        catch (error) {
+          console.log("error while saving the data to the local storage:",error);
+        }
+        // j somosto data todoItems.innerHTML er vatore store ache segulo localstorage a store hoye jabe "data" name a...
+      }
+
+      function showTask() {
+        todoItems.innerHTML = localStorage.getItem("data");
+      }
+      showTask();
+
+      function addingItems() {
+        if (inputField.value === "") {
+          alert("you need to write something to add..");
+        } else {
+          addTask(inputField.value); //taskes will be add inside the todoItmes(ul).
+          saveTaskToTheLocalStorage();
+        }
+        inputField.value = "";
+      }
+
+      // added the event listener to the todobutton.
+      todobutton.addEventListener("click", () => {
+        addingItems();
+      });
+
+      function doneAndRemoveButton(e) {
+        const targetItem = e.target.parentElement;
+        if (e.target.textContent === "Done") {
+          targetItem.classList.toggle("linethrough");
+          saveTaskToTheLocalStorage(); // store the data in localstorage.
+        } else if (e.target.textContent === "Remove") {
+          targetItem.remove();
+          saveTaskToTheLocalStorage(); // store the data in localstorage.
+        }
+      }
+
+      // added eventlistener to the todoitems.
+      todoItems.addEventListener("click", (event) => {
+        doneAndRemoveButton(event);
+      });
+
+      /*clear the all li elements from ul(todoItmes)*/
+      clearAll.addEventListener("click", () => {
+        while (todoItems.firstElementChild) {
+          todoItems.firstElementChild.remove();
+        } // ekhane fraction of second er modhe loop ta sesh hoche..
+
+        // todoItems.innerHTML = ''
+        // j kono akta method ami ekhane use korte pari..
+      });
+    </script>
+  </body>
+</html>

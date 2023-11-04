@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>some small projects</title>
+</head>
+<style>
+    #colorContainer{
+        width: 10em;
+        height: 10em;
+        border: solid 1px black;
+    }
+    #box{
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        border: solid black 1px;
+        background-color: bisque;
+    }
+</style>
+<body>
+    <button id="btn_counter">btn counter</button>
+    <p id="text"></p>
+
+    <!-- Random Color Generator -->
+    <button id="btnClr">color btn</button>
+    <div id="colorContainer"></div>
+
+    <!-- box hover effect -->
+    <div id="box"></div>
+
+
+    <script>
+        const text = document.getElementById('text');
+        const btn_counter = document.getElementById('btn_counter');
+
+        let count = 0;
+        btn_counter.addEventListener('click',()=>{
+            count++;
+            text.textContent = `The count is : ${count} times.`
+        })
+
+
+
+        /*random color generator*/
+
+        const btnclr = document.getElementById('btnClr')
+        const colorContainer = document.getElementById('colorContainer')
+        
+        function randomColorGenerator(){
+            const randomColor = `rgb(${Math.random() * 256},${Math.random() * 256},${Math.random() * 256})`;
+
+            colorContainer.style.backgroundColor = randomColor;
+        }
+
+
+        btnclr.addEventListener('click',()=>{
+            randomColorGenerator()
+        })
+
+
+        /* box hover effect */
+        const box = document.getElementById('box')
+
+        box.addEventListener('mouseenter',()=>{
+            box.style.backgroundColor = 'red'
+        })
+        box.addEventListener('mouseleave',()=>{
+            box.style.backgroundColor = 'bisque'
+        })
+
+
+
+    </script>
+</body>
+</html>

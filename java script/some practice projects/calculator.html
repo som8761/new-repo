@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    .row {
+      display: flex;
+    }
+    #calculator {
+      /* border: solid 1px black; */
+      border-radius: 22px;
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #6656;
+    }
+
+    #btn_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 20px;
+      margin: 4px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    #inputField {
+      padding: 1em;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      width: 202px;
+      text-align: right;
+    }
+  </style>
+  <body>
+    <h1>Calculator App</h1>
+
+    <div id="calculator">
+      <input type="text" id="inputField" />
+
+      <div id="btn_container">
+        <div class="row">
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>/</button>
+        </div>
+        <div class="row">
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>*</button>
+        </div>
+        <div class="row">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>-</button>
+        </div>
+        <div class="row">
+          <button>0</button>
+          <button>.</button>
+          <button>=</button>
+          <button>+</button>
+        </div>
+        <button id="clear">c</button>
+      </div>
+    </div>
+
+    <script>
+      const inputField = document.getElementById("inputField");
+      // const buttons = document.querySelectorAll("button");
+
+      let string = ""; // all pressed keys are stored here..
+
+      document.addEventListener("keypress", (e) => {
+        // document er help diye ami puro html model ke event listener lagiye dilam..r keydown diye keyboard input kle capture korlam. The keydown event is triggered when a key on the keyboard is pressed down.
+
+        const key = e.key; // direct target the key is pressed as like e.target..
+        const validKeys = "0123456789/*-+.=c"; // You can customize this
+
+        if (validKeys.includes(key)) {
+          // valid keys er modhe theke jadi kichu vi include thake key er modhe ...
+          if (key === "=") {
+            try {
+              const result = new Function("return " + string)(); // ai functrion ta actually return krche string er modhe j operation ta stored ache.mane jadi string er vaotore 9 + 9 store ache ..tahole function ta return krche result take.() ta call korche..
+
+              inputField.value = result; // update the result.
+            } catch (error) {
+              // Handle any potential errors, such as division by zero
+              inputField.value = "Error";
+            }
+
+            // upore j elements gulo store chilo segulo ekhane blank string eer stage replace hoye galo..
+            string = ""; //  very very important thing it is..
+          } else if (key === "c" || key === "C") {
+            inputField.value = "";
+            string = ""; // ata na dileo hobe.
+          } else {
+            // input field a update korar jonno ai line ta.
+            string = string + key; // for an example ami 7 a click korlam ,,sei 7 ta upore blank string er modhe stored holo..r ekhane string er modeh chole alo..then abar jadi onno kono stwitch(ex: +) click kori tahole sei switch ta key te bosbe r age string a jeta chilo mane 7 r akhn key te + ,,7 + hoye jabe..abar jadi 8 a click kori tahole seta key te bosbe r string a giye store hobe ,,then string = 7 + 8 (example)..
+            inputField.value = string;
+          }
+        }
+      });
+
+      // press the keyboard keys to access the calculator keys..
+
+      /*So, in summary:
+
+      1)Use e.key when you're interested in the specific keys pressed on the keyboard.
+
+      2)Use e.target when you want to work with the HTML element that triggered the event, which is common in various types of DOM events, not just keyboard events.*/
+
+
+
+      /*work summery :
+      
+      1) first of my work is to add event listeners to the buttons with keyboard or with innerHTMl..this keys will stored in the empty string above..and update that string to inputField..
+
+      2) then with the string (where all the keys/operations stored) create a function and calculate the operation with a specific key("=") which is stored inside the string..and update as well..
+
+      also replace the string with the empty string after doing the operation..
+
+      3) now with a specific key ("c") clear all the updated input fields ..
+
+
+      */
+    </script>
+  </body>
+</html>

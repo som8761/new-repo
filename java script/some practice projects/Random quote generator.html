@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generartor</title>
+  </head>
+  <style>
+    #quoteContainer {
+      border: solid 1px black;
+      width: 800px;
+      min-height: 200px;
+      margin: 0 auto;
+      padding: 0.6em;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    #quoteButton {
+      margin: 0 auto;
+      display: flex;
+      margin-top: 0.8em;
+      border-radius: 10px;
+    }
+    #clearButton {
+      margin: 0 auto;
+      display: flex;
+      margin-top: 0.8em;
+      border-radius: 10px;
+    }
+    #buttonContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.8em;
+    }
+    #quoteButton,
+    #clearButton {
+      margin: 0 10px; /* Add margin between the buttons */
+      border-radius: 10px;
+    }
+
+    #quoteList {
+      border: solid 1px black;
+      padding: 4px;
+      width: 23em;
+      min-height: 5em;
+      margin: 0 auto;
+      text-align: center;
+      list-style: none;
+      font-size: 18px;
+      font-weight: 700;
+      color: purple;
+      display: flex; /* Add this property */
+      justify-content: center; /* Add this property */
+      align-items: center; /* Add this property */
+    }
+
+    #errorContainer {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 0.5em;
+    }
+  </style>
+  <body>
+    <div id="quoteContainer">
+      <h1>Random Quote Generartor App</h1>
+      <ul id="quoteList">
+        <!-- the quotes will updated here autometically -->
+      </ul>
+
+      <div id="buttonContainer">
+        <button id="quoteButton">Random Quote</button>
+        <button id="clearButton">Clear Quote</button>
+      </div>
+      <div id="errorContainer"></div>
+    </div>
+
+    <script>
+      quotes = [
+        "Keep calm and carry on.",
+        "The only way to do great work is to love what you do. - Steve Jobs",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
+        "Life is what happens when you're busy making other plans. - John Lennon",
+        "In three words, I can sum up everything I've learned about life: it goes on. - Robert Frost",
+        "The best way to predict the future is to create it. - Peter Drucker",
+        "Happiness is not something ready-made. It comes from your own actions. - Dalai Lama",
+        "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+        "Believe you can, and you're halfway there. - Theodore Roosevelt",
+        "Life is short, and it is up to you to make it sweet. - Sarah Louise Delany",
+      ];
+
+      // refference the quoteButton.
+      const quoteButton = document.getElementById("quoteButton");
+
+      // refference the quoteList.
+      const quoteList = document.getElementById("quoteList");
+
+      // refference the clear quote button.
+      const clearButton = document.getElementById("clearButton");
+
+      // make the index function.
+      function makingTheRandomIndex(quote) {
+        const randomIndex = Math.floor(Math.random() * quote.length);
+        const randomQuote = quote[randomIndex];
+        appendTheQuotes(randomQuote);
+        saveTaskToLocalStorage();
+      }
+
+      // append the quotes inside the randomList.
+      function appendTheQuotes(random) {
+        const element = document.createElement("li");
+        element.textContent = random;
+        quoteList.innerHTML = "";
+        quoteList.appendChild(element);
+        saveTaskToLocalStorage(); // calling that function which is helps to adding the data inside the localstorage.
+      }
+
+      // adding the event on quoteButton.
+      quoteButton.addEventListener("click", () => {
+        makingTheRandomIndex(quotes);
+      });
+
+      function saveTaskToLocalStorage() {
+        try {
+          localStorage.setItem("QuoteData", quoteList.innerHTML);
+        } catch (error) {
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.textContent =
+            "Error: unable to save the data from quoteList to local storage."; // jadi data store na hoy tahole ata show korbe document a..
+          console.log(
+            "Erro while saving the data from quoteList to local storage",
+            error // ata show korbe console a.
+          );
+        }
+      }
+
+      // adding the task on display from localstorage.
+      function addTask() {
+        try {
+          const storeData = localStorage.getItem("QuoteData");
+          if (storeData) {
+            quoteList.innerHTML = storeData;
+          }
+        } catch (erro) {
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.textContent =
+            "Error: unable to save the data from quoteList to local storage."; // jadi data store na hoy tahole ata show korbe document a..
+          console.log(
+            "Erro while saving the data from quoteList to local storage",
+            error
+          ); // ata show korbe console a.
+        }
+      }
+      addTask();
+
+      // creating the function to clear the local storage.
+      function clearQuote() {
+        quoteList.innerHTML = "";
+        localStorage.removeItem("QuoteData");
+      }
+
+      // adding the event to the clear button foe clearing.
+      clearButton.addEventListener("click", () => {
+        clearQuote();
+      });
+    </script>
+  </body>
+</html>
