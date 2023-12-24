@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projects</title>
+</head>
+<style>
+    #container{
+        border: solid 2px black;
+    }
+    #todocontainer{
+        border: solid 1px rgb(100, 99, 99);
+    }
+
+  
+</style>
+<body>
+
+    <!-- (project-1)  Coin Flip Game -->
+    <button id="flip_btn">Flip coin</button>
+    <p id="result"></p>
+
+
+    <!-- Color Changer: -->
+    <button id="btn">change color</button>
+
+    <br>
+    <br>
+    <br>
+    
+    <!-- dice roll -->
+    <button id="dice">dice roll</button>
+    <div id="container"></div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+    <!-- click count project -->
+    <button id="count">click me</button>
+    <div id="container_click"></div>
+
+    <hr>
+    <br>
+    <br>
+    <br>
+
+    <!-- to do list -->
+    <input type="text"  id="todoinput" placeholder="to-do-items">
+    <button id="todobutton">Add items</button>
+
+    <div id="todocontainer">
+        <ul id="todobox">
+            <!-- items will added here autometically  -->
+        </ul>
+    </div>
+
+
+
+    <script>
+        /*  (project-1)  Coin Flip Game:
+        Create a simple coin flip game. When you click a button, it will randomly show either "Heads" or "Tails" on the webpage.*/
+
+        const flip_btn = document.getElementById('flip_btn')
+        const result = document.getElementById('result')
+
+        function FlipCoinFunc(flip){
+            const randomNum = Math.floor(Math.random() * 10) + 1;
+            if(randomNum <= 5){
+                result.textContent = 'heads'
+            }
+            else{
+                result.textContent = 'tails'
+            }
+        }
+
+        flip_btn.addEventListener('click',()=>{
+            const flip = FlipCoinFunc();
+
+        })
+
+
+
+
+
+
+
+
+        /*Color Changer:
+        Create a webpage with a button that changes the background color randomly when clicked.*/
+        const btn = document.getElementById('btn')
+
+        btn.addEventListener('click',()=>{
+            const randomColor = `rgb(${Math.random () * 255},${Math.random()* 255},${Math.random() * 255})`
+            document.body.style.backgroundColor = randomColor;
+        })
+
+         /*actually kaj ta ki bhabe korche seta bojhano holo.*/
+        //  const randomColor = `rgb(${Math.random() * 256},${Math.random() * 256},${Math.random() * 256})`
+        // document.body.style.backgroundColor = randomColor;
+        
+        /*rgb te red ,green ,blue ai 3 te each and every color er jonno 256 ta kore shades ache..tai ekhane math.rando ()* 256 kora holo ..mane 0 to 256 obdi color pabo..r 3 bar seta likhlam karon r,g,b 3 ter jonno..r sobar age rgb likhte holo bojhanor jonno ..r ai sobkichu ke aki line a anar jonno temerate literal (``) use kora holo.*/
+
+
+
+
+
+
+
+
+
+        /*Dice Roll Game:
+        Create a simple dice roll game. When you click a button, it will randomly show a number between 1 and 6, simulating a dice roll.*/
+
+        const dice_btn = document.getElementById('dice')
+        const container = document.getElementById('container')
+
+        function diceRoll(){
+            const randomDiceNumber = Math.floor(Math.random() * 10) + 1;
+            const createEle = document.createElement('p')
+            createEle.innerHTML = `you rolled : ${randomDiceNumber}`
+            container.appendChild(createEle)
+            // upore ami innerHTML er jaygay textcontent tao use korte partam.
+
+            // container.textContent = `you rolled a Number:${randomDiceNumber}`;
+            // ekahne ami akta element er vatore dhukiye kaj ta korte partam but ami direct conatianer a dhukiye dilam kono elemenet er vatore dhokai ni.
+        }
+       
+        dice_btn.addEventListener('click',()=>{
+            container.innerHTML = ''
+            const dicerollFunc = diceRoll();
+        })
+
+
+
+
+
+        /*Button Click Counter:
+        Create a button that keeps track of how many times it has been clicked. When you click the button, it will display the total number of clicks.*/
+        const click_btn = document.getElementById('count') 
+        const click_container = document.getElementById('container_click')
+
+        let clickCounts = 0;
+
+        click_btn.addEventListener('click',()=>{
+            clickCounts++;
+            click_container.innerHTML  = `click counts;${clickCounts}`;
+            // upore ami innerHTML er jaygay textcontent tao use korte partam.
+        })
+        
+
+
+
+        /*to do list*/
+        // const todobutton = document.getElementById('todobutton')
+        // const inputText = document.getElementById('inputText')
+
+
+        // let storeTodoItems = []
+
+        // todobutton.addEventListener('click',()=>{
+        //     const todotext = inputText.value;
+        //     storeTodoItems.push(todotext)
+        //     inputText.value = '';
+
+
+        //     todoitemsDisplay()
+        // })
+        
+
+        // const todobox = document.getElementById('todolist')
+        
+        // function todoitemsDisplay(){
+        //     todobox.innerHTML = '';
+        //     // for replace the previous elements and add the new one..but not get it inot for each ,otherwise it will replace all those things with the blank one.
+            
+        //     storeTodoItems.forEach((items)=>{
+        //         const createEle = document.createElement('li')
+        //         const text = document.createTextNode(items)
+
+        //         /*append kore diche dom er modhe*/
+        //         createEle.appendChild(text)
+        //         todobox.appendChild(createEle)
+        //     })
+        // }
+
+
+
+
+
+
+
+
+
+        /* TO DO LIST APP*/
+
+        // todo items r dodo button ke target kore nilam.
+        const todoinput = document.getElementById('todoinput')
+        const todobutton = document.getElementById('todobutton')
+
+        const storetodoarray = []
+        function todoFunc(){
+            const getIntoValue = todoinput.value;
+            storetodoarray.push(getIntoValue)
+            todoinput.value = '';
+
+            TodoItemsDisplay();
+
+        }
+
+        todobutton.addEventListener('click',()=>{
+            const clickOnButton = todoFunc();
+        })
+
+
+        /*create a function(items remove) where a operation occures by splice method */
+        function removeTodo(index){
+            storetodoarray.splice(index,1)
+            TodoItemsDisplay()
+        }
+
+
+        const todobox = document.getElementById('todobox')
+
+
+        function TodoItemsDisplay(){
+            todobox.innerHTML = '';
+            // todobox er vatore jate kono jinis repeat na kore tai empty string diye previous items guloke replace kore dilam.
+
+            for(let i = 0; i < storetodoarray.length; i++){
+                const createEle = document.createElement('li')
+                const createText = document.createTextNode(storetodoarray[i])
+
+                // create a remove button.
+                const removerbutton = document.createElement('button')
+                const removerbuttonText = document.createTextNode('Remove')
+                
+
+
+                removerbutton.addEventListener('click',()=>{
+                    removeTodo(storetodoarray.indexOf(storetodoarray[i]))
+                })
+
+                // append kore dilam
+                createEle.appendChild(createText)
+                createEle.appendChild(removerbutton)
+                todobox.appendChild(createEle)
+                removerbutton.appendChild(removerbuttonText)
+
+
+            }
+        }
+
+        /*In summary ::
+        textContent is used to get or set the text content of an element (replacing any existing content), while createTextNode() is used to create a new text node that can be added as a child of an element without removing existing content.*/
+
+
+
+
+
+
+       
+    </script>
+</body>
+</html>

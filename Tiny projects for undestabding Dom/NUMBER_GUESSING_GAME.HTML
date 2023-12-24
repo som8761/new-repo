@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+  </head>
+  <style>
+    /* css */
+    #colorContainer {
+      height: 300px;
+      width: 300px;
+      border: solid 1px #14111166;
+      margin: 0 auto;
+    }
+
+    /* Define the default background color */
+    /* : Mouseover Effects */
+    .colorDiv {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+    }
+
+    /* dropdown menu */
+    .dropdownMenu {
+      display: none;
+      padding: 10px;
+      position: absolute;
+      background-color: #6666;
+    }
+    .show {
+      display: block;
+    }
+  </style>
+  <body>
+    <!-- guess the number game -->
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="userGuess" />
+    <button onclick="checkGuess()">Submit</button>
+    <p id="feedback"></p>
+    <p id="attempts"></p>
+
+    <!-- random quote generator -->
+    <button id="quoteBtn">button</button>
+    <div id="container"></div>
+
+    <br />
+    <br />
+    <br />
+
+    <!-- button counter -->
+    <button id="btnCounter">btn Counter</button>
+    <div id="btnCounterContainer"></div>
+
+    <br />
+    <br />
+    <br />
+
+    <!-- Random Color Generator -->
+    <button id="btnClr">color btn</button>
+    <div id="colorContainer"></div>
+
+    <!-- : Mouseover Effects -->
+    <div class="colorDiv"></div>
+
+    <!-- Dropdown Menu -->
+    <button id="dropdownBtn">dropdown</button>
+    <div id="dropdownItems" class="dropdownMenu">
+      <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+      </ul>
+    </div>
+
+    <!-- Password Strength Checker -->
+    <label for="password">password:</label>
+    <input type="password" name="password" id="passwordInput" />
+    <p id="passwordStrength"></p>
+
+    <script>
+      // const secretNumber = Math.floor(Math.random() * 100) + 1;
+      // let attempts = 0;
+
+      // function checkGuess() {
+      //   const userGuess = parseInt(document.getElementById("userGuess").value);
+      //   document.getElementById("userGuess").value = '';
+
+      // //   if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+      // //     document.getElementById("feedback").textContent = "Please enter a valid number between 1 and 100.";
+      // //     return;
+      // //   }
+
+      // /*nicher duto line r uporer akta line same*/
+      // // if ( userGuess < 1 ) {
+      // //     document.getElementById("feedback").textContent = "Please enter a valid number between 1 and 100.";
+      // //     return;
+      // //   }
+      // //   else if(userGuess > 100){
+      // //     document.getElementById("feedback").textContent = "Please enter a valid number between 1 and 100.";
+      // //     return;
+      // //   }
+
+      //   attempts++;
+
+      //   if (userGuess === secretNumber) {
+      //     document.getElementById("feedback").textContent = `Congratulations! You guessed the correct number ${secretNumber}.`;
+      //     document.getElementById("attempts").textContent = `Number of attempts: ${attempts}`;
+      //   } else if (userGuess < secretNumber) {
+      //     document.getElementById("feedback").textContent = "Too low. Try again!";
+      //   } else {
+      //     document.getElementById("feedback").textContent = "Too high. Try again!";
+      //   }
+      // }
+
+      const quotesArray = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them.",
+        "Parallel lines have so much in common. It's a shame they'll never meet.",
+        "Why don't some couples go to the gym? Because some relationships don't work out.",
+        "Why don’t skeletons fight each other? They don’t have the guts.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "What do you call fake spaghetti? An impasta!",
+        "Why did the bicycle fall over? Because it was two-tired!",
+        "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+        "Why did the tomato turn red? Because it saw the salad dressing!",
+      ];
+
+      const container = document.getElementById("container");
+      const quoteBtn = document.getElementById("quoteBtn");
+
+      function randomQuoteFunc(jo) {
+        const quoteIndex = Math.floor(Math.random() * jo.length);
+        const quotes = jo[quoteIndex];
+        const ele = document.createElement("p");
+        ele.textContent = quotes;
+        container.innerHTML = "";
+        container.appendChild(ele);
+      }
+
+      quoteBtn.addEventListener("click", () => {
+        randomQuoteFunc(quotesArray);
+      });
+
+      /*guess the number game*/
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
+      let attempts = 0;
+
+      function checkGuess() {
+        attempts++;
+
+        const userGuess = parseInt(document.getElementById("userGuess").value);
+        document.getElementById("userGuess").value = "";
+
+        if (userGuess === randomNumber) {
+          document.getElementById(
+            "feedback"
+          ).textContent = `congratulations you have guess the right number! ${userGuess}`;
+
+          document.getElementById(
+            "attempts"
+          ).textContent = `Number of attempts : ${attempts}`;
+        } else if (userGuess < randomNumber) {
+          document.getElementById(
+            "feedback"
+          ).textContent = `you have entered the lower value!`;
+        } else {
+          document.getElementById(
+            "feedback"
+          ).textContent = `you have entered the higher value!`;
+        }
+      }
+
+      /*Button Counter*/
+      let btnCounter = document.getElementById("btnCounter");
+      let clickCount = 0;
+      // most imoortant to incriment anything.
+
+      btnCounter.addEventListener("click", function btnCounterFunc() {
+        // incriment hoche ekhane but store korsnor jonno kono jaiga chai tai r akta variable banalam jeta holo clickcount nahle ata possible noy.
+
+        clickCount++;
+        const btnCounter_container = document.getElementById(
+          "btnCounterContainer"
+        );
+        btnCounterContainer.textContent = `click count : ${clickCount} `;
+      });
+
+      const clrBtn = document.getElementById("btnClr");
+      // const colorContainer = document.getElementById('colorContainer')
+
+      clrBtn.addEventListener("click", () => {
+        const randomColor = `rgb(${Math.random() * 256},${
+          Math.random() * 256
+        },${Math.random() * 256})`;
+        colorContainer.style.backgroundColor = randomColor;
+        // document.body.style.backgroundColor = randomColor
+      });
+
+      /*: Mouseover Effects*/
+
+      // Function to change the background color based on the mouseenter/mouseleave event
+      const colorDiv = document.querySelector(".colorDiv");
+
+      // function changeBackgroundColor(color) {
+      //   // if (isMouseEnter) {
+      //   //   // Change background color when mouse enters the div
+      //   //   colorDiv.style.backgroundColor = "lightgreen";
+      //   // }
+      //   //  else {
+      //   //   // Change background color back to the default when mouse leaves the div
+      //   //   colorDiv.style.backgroundColor = "lightblue";
+      //   // }
+
+      //   colorDiv.style.backgroundColor = color;
+
+      // }
+
+      colorDiv.addEventListener("mouseenter", () => {
+        colorDiv.style.backgroundColor = "lightgreen";
+      });
+      colorDiv.addEventListener("mouseleave", () => {
+        colorDiv.style.backgroundColor = "lightblue";
+      });
+
+      /*dropdown menu*/
+      const deopdownBtn = document.getElementById("dropdownBtn");
+      const dropdownItems = document.getElementById("dropdownItems");
+
+      deopdownBtn.addEventListener("click", () => {
+        dropdownItems.classList.toggle("show");
+      });
+
+      /*Password Strength Checker*/
+      const passwordInput = document.getElementById("passwordInput");
+      const passwordStrength = document.getElementById("passwordStrength");
+
+      passwordInput.addEventListener("input", () => {
+        const password = passwordInput.value;
+        // let strength = '';
+
+        // jadi niche comment kora jinis gulo ke comment ta kori tahole sei jinis gulo mane as example jadi 6 er thke kom pass hoy tahole seta weak r seta week,r seta ai password er strength er empty string er sathe replace hoye jabe,,r nicher if esle ,else gulo r kaj value thakbe na,..r jakhn update korte jabo takhn password strenth er jaygay ai strength e j jinis ta asbe seta update hoye jabe.
+        // mane simple kotha holo j condtion ta appliicable hobe seta oi strength er empty string er sathe replace hoye jabe...r niche update hoye jabe setai.
+        // 1st method ta kora ta aktu better.
+
+        if (password.length < 6) {
+          // strength = 'Weak';
+          passwordStrength.textContent = `password is weak`;
+        } else if (password.length < 10) {
+          // strength = 'medium';
+          passwordStrength.textContent = `password is medium`;
+        } else {
+          // strength = 'strong';
+          passwordStrength.textContent = `password is strong`;
+        }
+
+        // passwordStrength.textContent = `password strength ${strength}`
+      });
+    </script>
+  </body>
+</html>
